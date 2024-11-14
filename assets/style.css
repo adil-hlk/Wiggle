@@ -1,4 +1,11 @@
 :root
+ul {
+    list-style: none;
+}
+a:link {
+text-decoration: none;
+}
+
 .btn-custom {
     background-color: #3498db; /* Couleur personnalisée */
     color: white;
@@ -6,4 +13,15 @@
 
 .btn-custom:hover {
     background-color: #2980b9;
+}
+
+/* Footer */
+footer {
+    background-color: #88bdfc;
+    text-align: center;
+    padding-top: 1em;
+}
+.below {
+    background-color: #4583BC;
+    font-size: small;
 }
