@@ -21,6 +21,12 @@ footer {
     text-align: center;
     padding-top: 1em;
 }
+footer div.col-md-6.col-sm-12 {
+    padding-bottom: 1em;
+}
+footer p {
+    margin: 0em;
+}
 .below {
     background-color: #4583BC;
     font-size: small;
