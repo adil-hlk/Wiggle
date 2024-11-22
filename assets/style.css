@@ -4,6 +4,7 @@ ul {
 }
 a:link {
 text-decoration: none;
+color: white;
 }
 
 .btn-custom {
@@ -19,6 +20,7 @@ text-decoration: none;
 footer {
     background-color: #88bdfc;
     text-align: center;
+    color: white;
 }
 footer p {
     margin: 0em;
