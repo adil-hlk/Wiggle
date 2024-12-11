@@ -44,6 +44,24 @@ echo 2* (4+9)/3;
 
 //arrays sont les differente variable créer dans une seul variable
 
+//indexed array
+// $peopleOne = ['shaun', 'pekin', 'ryu'] on utilise les parenthhese carré pour indiqueé que c'est une array
+// echo $peopleOne[1]; idem que pour quand on cherchait les lettres dans les string on doit mettre [] puis un chiffre dedans pour pour savoir de quel variable on parle ici le zero (0) represente la personne à la premiere place
+// $peopleTwo = array ('ken', 'chun'); autre facon de creer une array
+// echo $peopleTwo[1];
+//$ages = [20,30,40,50];
+//print_r($ages); fonction qui veut dire print readable il va mtn donner une version lisible de cette array
+//$ages[1] = 25; si on veut changer la valeur de la position 1
+// $ages[] = 60; si on veut ajouter une donnée à l'array
+//array_push($ages, 70); une autre maniere d'ajouter une valeur
+//
+
+//associative array ici on creer des clés quand on crer des arrays
+
+//$ninjasOne = ['shaun' => 'noir', 'mario' => 'orange', 'luigi' => 'brown']; lafleche pointe la valeur que la clé aura ici shaun (la clé) aura comme valeur noir (la valeur)
+// echo $ninjasOne ['mario'];
+//$ninjasOne['toad'] = 'pink'; pour ajouter une clé
+//echo count($ninjasOne); pour compter les valeurs
 
 
 
