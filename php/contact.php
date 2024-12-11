@@ -63,6 +63,27 @@ echo 2* (4+9)/3;
 //$ninjasOne['toad'] = 'pink'; pour ajouter une clé
 //echo count($ninjasOne); pour compter les valeurs
 
+//multidimensionel arrays c'est des arrays dans des arrays
+//$blogs = [
+['mario party', 'mario', 'lorem', 30],
+['mario kart cheats', 'toad', 'lorem', 25],
+['zelda hidden chests', 'link', 'lorem', 50]
+];
+
+// print_r($blogs[1]); pour faire apparaitre le deuxieme array et si on veut faire apparaitre une valeur dans la deuxieme array alors on ajoute encore un [] a coté et on indique quel valeur on voudrairt faire apparaitre 
+// print_r($blogs[1][1]); ca se presente comme ca
+//au lieu de ça on va facilité et sonner des titre au variables pour un soucis de comprehensibilité
+// $blogs = [
+['title' => 'mario party', 'author' => 'mario', 'content' => 'lorem','likes' => 30],
+['title' =>'mario kart cheats', 'author' =>'toad', 'content' =>'lorem','likes' => 25],
+['title' =>'zelda hidden chests', 'author' =>'link', 'content' =>'lorem', 'likes' =>50]
+];
+// et donc se notera echo $blogs[2]['author'];
+//$blogs [] = ['title' => 'castle party']; pour ajouter une nouvelle array
+//$popped = array_pop($blogs); sera a sortir la derniere array pour la mettre dans $popped
+
+
+
 
 
 
