@@ -1,31 +1,68 @@
 :root
-ul {
-    list-style: none;
-}
-a:link {
-text-decoration: none;
-color: white;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Epilogue', sans-serif;
 }
 
-.btn-custom {
-    background-color: #3498db; /* Couleur personnalisée */
-    color: white;
+@font-face {
+    font-family: 'Epilogue';
+    src: url('Epilogue-VariableFont_wght.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.btn-custom:hover {
-    background-color: #2980b9;
+.footer {
+    display: grid;
+    gap: 20px;
+    font-weight: bold;
 }
 
-/* Footer */
-footer {
-    background-color: #000000;
+.footer-top {
+    background-color: #212121;
+    color: #ffffff;
     text-align: center;
-    color: white;
+    padding: 20px 0;
 }
-footer p {
-    margin: 0em;
+
+.footer-top p {
+    margin: 0;
 }
-.below {
-    background-color: #4583BC;
-    font-size: small;
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.footer-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+    color: #212121;
+    font-size: 14px;
+}
+
+.footer-bottom span a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-bottom span a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .footer-bottom {
+        grid-template-columns: repeat(4, auto);
+        gap: 15px;
+    }
 }
