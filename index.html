@@ -11,13 +11,25 @@
 <body>
     <!-- Header & nav -->
     <header>
-        <nav>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+        <nav class="navbar navbar-light navbar-light bg-light">
+            <div class="navbar-logo">Wiggle 2024</div>
+            <ul class="nav-links">
+                <li><a href="#chercher-sitter">Chercher un sitter</a></li>
+                <li><a href="#devenir-sitter">Devenir un sitter</a></li>
+                <li><a href="#connexion">Se connecter/S'inscrire</a></li>
+                <li><a href="#faq-contact">FAQ/Contact</a></li>
             </ul>
+            <div class="burger-menu">
+                <img src="assets/images/menu-plein.svg" alt="Menu-burger">
+            </div>
         </nav>
+    
+        <script src="path/to/bootstrap.bundle.min.js"></script>
+        <script>
+            document.getElementById('burgerMenu').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        </script>
     </header>
 
     <!-- Section principale de la page -->
@@ -25,11 +37,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1>Mon Titre</h1>
-            <p>Ceci est un exemple de texte dans une colonne.</p>
+            <h1>Test de Titre</h1>
+            <p>Test de colonne numero 1</p>
         </div>
         <div class="col-md-6">
-            <p>Ceci est une autre colonne.</p>
+            <p>Test de colonne numero 2</p>
         </div>
     </div>
 </div>
