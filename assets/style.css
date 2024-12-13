@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Epilogue', sans-serif;
+    text-align: center;
+    
 }
 
 .navbar {
@@ -12,9 +14,9 @@ body {
     padding: 1rem;
 }
 
-.navbar-logo img {
-    max-height: 50px;  
-    width: auto;
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .nav-links {
@@ -30,7 +32,7 @@ body {
 }
 
 .burger-menu img {
-    width: 30px; 
+    width: 30px;  /* Ajustez la taille de votre image si nécessaire */
     height: auto;
 }
 
@@ -55,6 +57,33 @@ body {
     .nav-links.active {
         display: flex;
     }
+}
+@media (max-width: 768px) {
+    .burger-menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        background-color: #fff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+.main-top {
+    display: flex;
+    justify-content: end;
 }
 
 
