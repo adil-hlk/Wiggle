@@ -1,4 +1,6 @@
-:root
+:root 
+
+
 body {
     margin: 0;
     padding: 0;
@@ -6,6 +8,8 @@ body {
     text-align: center;
     
 }
+
+/*section nav*/
 
 .navbar {
     display: grid;
@@ -81,9 +85,74 @@ body {
     }
 }
 
+/*section menu*/
+
 .main-top {
     display: flex;
     justify-content: end;
+}
+
+#accueil-recherche {
+    padding-bottom: 40px; /* Espace sous les autres éléments */
+}
+
+
+.bg-custom {
+    background-color:rgba(136, 189, 252, 0.5); 
+
+}
+
+.btn-rechercher {
+    border-radius: 20px;            /* Coins arrondis */
+    background-color: #ffffff;     /* Fond blanc */
+    color: #4583BC;                /* Texte bleu (ajustez si besoin) */
+    border: 2px solid #4583BC;     /* Bordure bleue de 2px */
+    padding: 10px 20px;            /* Espacement intérieur pour rendre le bouton plus esthétique */
+    font-size: 1rem;               /* Taille du texte */
+    font-weight: bold;             /* Texte en gras */
+    transition: all 0.3s ease;     /* Transition douce pour le hover */
+}
+
+.btn-rechercher:hover {
+    background-color: #4583BC;     /* Fond bleu au survol */
+    color: #ffffff;                /* Texte blanc au survol */
+
+}
+
+.illu-img {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    max-width: 100px; /* Taille maximale des images */
+    height: auto;
+
+}
+
+#services h2 {
+    margin-bottom: 30px;
+}
+
+#services .col {
+    display: flex; /* Activer Flexbox pour chaque élément */
+    align-items: center; /* Aligner verticalement */
+    justify-content: flex-start; /* L'image reste à gauche */
+    text-align: left; /* Texte aligné à gauche */
+}
+
+#services .col img {
+    margin-right: 15px; /* Espacement entre l'image et le texte */
+}
+
+@media (max-width: 991px) {
+    #services .col {
+        flex-direction: column; /* Empile l'image au-dessus du texte */
+        text-align: center; /* Centrer le texte */
+    }
+    #services .col img {
+        margin-right: 0; /* Supprime la marge sur mobile */
+        margin-bottom: 15px; /* Ajoute un espacement sous l'image */
+    }
 }
 
 
@@ -93,6 +162,8 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+
+/*section footer*/
 
 .footer {
     display: grid;
