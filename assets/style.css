@@ -155,6 +155,66 @@ body {
     }
 }
 
+.container1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Ajout d'espace entre les cartes */
+  }
+  
+  .container1 .glass {
+    position: relative;
+    width: 220px; /* Augmentation pour plus de texte */
+    height: 200px;
+    background: linear-gradient(#fff2, transparent);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    text-align: center; /* Alignement central du texte */
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* Interaction hover */
+  .container1 .glass:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Lorsqu'une carte est sélectionnée */
+  .container1 .glass.selected {
+    border-color: #4caf50;
+    box-shadow: 0 12px 20px rgba(76, 175, 80, 0.5);
+  }
+  
+  /* Texte des avis */
+  .container1 .glass p {
+    color: #000000;
+    font-size: 1em;
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .container1 .glass::before {
+    content: attr(data-text);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e99f01;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
 
 @font-face {
     font-family: 'Epilogue';
