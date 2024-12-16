@@ -306,6 +306,101 @@ body {
     margin: 2em;
 }
 
+/* Structure principale de liste des profils*/
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    flex-wrap: wrap; /* Permet un meilleur comportement en responsive */
+    padding: 20px;
+    min-height: 50vh; /* Ajuste la hauteur minimum */
+    background-color: #fff2c2; /* Optionnel : couleur de fond */
+}
+
+/* Cartes */
+.card {
+    width: 190px;
+    height: 254px;
+    background: rgba(255, 231, 111, 0.37); /* Couleur avec opacité */
+    position: absolute;
+    box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Images dans les cartes */
+.card img {
+    width: 60px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Effets hover pour les cartes */
+.main:hover .card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.main:hover #c1 {
+    transform: translateX(-100px) rotate(-30deg);
+}
+
+.main:hover #c2 {
+    transform: translateX(-50px) rotate(-15deg);
+}
+
+.main:hover #c3 {
+    transform: translateX(50px) rotate(15deg);
+}
+
+.main:hover #c4 {
+    transform: translateX(100px) rotate(30deg);
+}
+
+.card:hover {
+    transform: scale(1.05) !important;
+    z-index: 10; /* Met en avant la carte survolée */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        width: 160px; /* Réduction de la taille pour mobile */
+        height: 220px;
+    }
+
+    .main {
+        flex-wrap: nowrap;
+        overflow-x: scroll; /* Permet un défilement horizontal si nécessaire */
+    }
+
+    .main:hover .card {
+        transform: none; /* Supprime les transformations en mode mobile */
+    }
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 140px;
+        height: 200px;
+    }
+
+    .main {
+        justify-content: flex-start; /* Aligne les cartes au début */
+    }
+}
+
 
 /*section footer*/
 
