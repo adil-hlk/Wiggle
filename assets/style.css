@@ -247,7 +247,9 @@ body {
     margin-top: 1em;
     margin-bottom: 1em;
   }
-
+  .services h3{
+    text-align: left;
+  }
   .container1 .glass:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
