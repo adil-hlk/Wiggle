@@ -18,10 +18,7 @@ body {
     padding: 1rem;
 }
 
-.navbar-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
+
 
 .nav-links {
     display: flex;
