@@ -8,7 +8,10 @@ body {
     text-align: center;
     
 }
-
+body h1 {
+    font-weight: bold;
+    margin: 1em;
+}
 /*section nav*/
 
 .navbar {
@@ -223,7 +226,15 @@ body {
     font-weight: bold;
   }
   
-  
+  .etapes {
+    background-color: #ccdcf1;
+    padding: 1em;
+  }
+
+  .services {
+    background-color: #fff2c2;
+  }
+
   .container1 .glass:hover {
     transform: translateY(-10px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
@@ -264,6 +275,14 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+
+
+/*mentions legales*/
+.legale {
+    text-align: left;
+    margin: 2em;
+}
+
 
 /*section footer*/
 
