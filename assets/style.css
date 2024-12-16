@@ -308,13 +308,7 @@ body {
     margin: 2em;
 }
 
-<<<<<<< Updated upstream
 /* Structure principale de liste des profils*/
-=======
-/*liste profil*/
-
-/* Structure principale */
->>>>>>> Stashed changes
 .main {
     display: flex;
     justify-content: center;
@@ -323,11 +317,7 @@ body {
     gap: 10px;
     flex-wrap: wrap; /* Permet un meilleur comportement en responsive */
     padding: 20px;
-<<<<<<< Updated upstream
     min-height: 50vh; /* Ajuste la hauteur minimum */
-=======
-min-height: 50vh; /* Ajuste la hauteur minimum */
->>>>>>> Stashed changes
     background-color: #fff2c2; /* Optionnel : couleur de fond */
 }
 
@@ -384,13 +374,8 @@ min-height: 50vh; /* Ajuste la hauteur minimum */
 /* Responsive */
 @media (max-width: 768px) {
     .card {
-<<<<<<< Updated upstream
         width: 160px; /* Réduction de la taille pour mobile */
         height: 220px;
-=======
-        width: 80px; /* Réduction de la taille pour mobile */
-        height: 120px;
->>>>>>> Stashed changes
     }
 
     .main {
