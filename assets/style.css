@@ -22,13 +22,13 @@ body {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     padding: 1rem;
-    background-color: #ffffff; /* Couleur de fond claire */
+    background-color: #ffffff; 
     position: relative;
     z-index: 1000;
 }
 
 .navbar-logo img {
-    width: 300px; /* Taille raisonnable pour le logo */
+    width: 300px; 
     height: auto;
 }
 
