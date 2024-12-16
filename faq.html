@@ -1,11 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="assets/style.css">
+<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<title>FAQ</title>
+</head>
 
 
 
 
+<body>
+  <header>
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="navbar-logo">
+            <img src="assets/images/logo_chien_chat_V2.svg" alt="logo wiggle">
+        </div>
 
+        <!-- Liens de navigation -->
+        <ul class="nav-links">
+            <li><a href="chercher_sitter.html">Chercher un sitter</a></li>
+            <li><a href="devenir_sitter.html">Devenir un sitter</a></li>
+            <li><a href="#connexion">Se connecter/S'inscrire</a></li>
+            <li><a href="faq.html">FAQ/Contact</a></li>
+        </ul>
+
+        <!-- Menu burger -->
+        <div class="burger-menu" id="burgerMenu">
+            <img src="assets/images/menu-plein.svg" alt="Menu">
+        </div>
+    </nav>
+</header>
+
+<script>
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navLinks = document.querySelector('.nav-links');
+
+    burgerMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+<main>
 <section class="text-center p-5">
   <h1 class="text-uppercase fw-bold text-start">QUESTIONS FRÉQUENTES</h1>
 <div class="accordion" id="accordionExample">
@@ -92,10 +132,10 @@
         </div>
       </div>
 </section>
-      <img src="" alt="Chat se posant une question">
+      <img class="illu-img-moyen" src="assets/images/chat-interogation.svg" alt="Chat se posant une question">
 
-      <section>
-        <h1>FORMULAIRE DE CONTACT</h1>
+      <section class="text-center p-5 bg-custom">
+        <h1 class="text-uppercase fw-bold text-start">FORMULAIRE DE CONTACT</h1>
         <div class="row">
           <form class="col row justify-content-md-center col-lm-5 col-rm-5 align-items-center">
               <div class="form-group">
@@ -119,3 +159,21 @@
       <br><a href="#" class="btn-rechercher md-2" role="button" aria-disabled="true">Envoyer</a>
       </section>
   </div>
+</main>
+  <!-- Pied de page -->
+  <footer class="footer">
+    <div class="footer-top">
+        <p>suivez nous sur nos réseaux</p>
+        <div class="footer-icons">
+            <a href="#" class="icon-effect"><img src="assets/images/facebook-app-round-white-icon.svg" alt="Facebook"></a>
+            <a href="#" class="icon-effect2"><img src="assets/images/instagram-white-icon.svg" alt="Instagram"></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span><a href="chercher_sitter.html">Chercher un sitter</a></span>
+        <span><a href="devenir_sitter.html">Devenir sitter</a></span>
+        <span><a href="faq.html">Aide</a></span>
+        <span>@2024 Wiggle | Mentions Légales - Tous droits réservés.</span>
+    </div>
+</footer>
+</body>
