@@ -6,15 +6,84 @@
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <title>Devenir sitter</title>
-<<<<<<< Updated upstream
+    <title>se connecter</title>
 </head>
 <body>
-    
+ <!-- Header & nav -->
+ <header>
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="navbar-logo">
+            <img src="assets/images/logo_chien_chat_V2.svg" alt="logo wiggle">
+        </div>
+
+        <!-- Liens de navigation -->
+        <ul class="nav-links">
+            <li><a href="chercher_sitter.html">Chercher un sitter</a></li>
+            <li><a href="devenir_sitter.html">Devenir un sitter</a></li>
+            <li><a href="#connexion">Se connecter/S'inscrire</a></li>
+            <li><a href="faq.html">FAQ/Contact</a></li>
+        </ul>
+
+        <!-- Menu burger -->
+        <div class="burger-menu" id="burgerMenu">
+            <img src="assets/images/menu-plein.svg" alt="Menu">
+        </div>
+    </nav>
+</header>
+
+<script>
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navLinks = document.querySelector('.nav-links');
+
+    burgerMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
 <main>
+    <section class="bg-custom">
+    <div class="container">
+    <div class="row">
+            <form class="col row justify-content-md-center col-lm-5 col-rm-5 align-items-center">
+                <div class="row">
+                    <label for="formulaire-à-choix4" class="fw-bold">Á quel date</label>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Jour">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Mois">
+                  </div>
+                </div>
+              </form>
+
+          </form>
+    </div>
+        <br><a href="#" class="btn-rechercher md-2" role="button" aria-disabled="true">rechercher</a>
+</div>
+</section>
+<div>
+    <img class="illu-img-moyen" src="assets/images/homme-saute-chat.svg" alt="hommme-saute sur son chat">
+</div>
+    
+    
+
 
 </main>
+<!-- Pied de page -->
+<footer class="footer">
+    <div class="footer-top">
+        <p class="fw-bold">suivez nous sur nos réseaux</p>
+        <div class="footer-icons">
+            <a href="#" class="icon-effect"><img src="assets/images/facebook-app-round-white-icon.svg" alt="Facebook"></a>
+            <a href="#" class="icon-effect2"><img src="assets/images/instagram-white-icon.svg" alt="Instagram"></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span><a href="chercher_sitter.html">Chercher un sitter</a></span>
+        <span><a href="devenir_sitter.html">Devenir sitter</a></span>
+        <span><a href="faq.html">Aide</a></span>
+        <span>@2024 Wiggle | Mentions Légales - Tous droits réservés.</span>
+    </div>
+</footer>
 </body>
-=======
-</head>
->>>>>>> Stashed changes
