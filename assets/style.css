@@ -8,8 +8,10 @@ body {
     text-align: center;
     
 }
-body h1 {
-    font-weight: bold;
+
+    .etape {
+    width: 50px;
+    height: auto;
     margin: 1em;
 }
 /*section nav*/
@@ -235,10 +237,15 @@ body h1 {
   .etapes {
     background-color: #ccdcf1;
     padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
   .services {
     background-color: #fff2c2;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
   .container1 .glass:hover {
