@@ -306,6 +306,36 @@ body {
     padding: 1em;
 }
 
+.album-card {
+    position: relative;
+}
+
+.album-photo {
+    background-color: #ffe66d;
+    border-radius: 20px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-photo {
+    position: absolute;
+    bottom: -1em;
+    left: 1em;
+    background-color: #ffffff;
+    border-radius: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+}
+
+.user-name {
+    position: absolute;
+    left: 8em;
+}
+
 /*mentions legales*/
 .legale {
     text-align: left;
