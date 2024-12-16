@@ -133,7 +133,7 @@ body h1 {
 
 }
 
-.illu-img {
+.illu-img-petit {
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -265,7 +265,7 @@ body h1 {
     }
   }
 
-  .illu-img1 {
+  .illu-img-moyen {
     display: block;
     margin: 0 auto; 
     max-width: 100%; 
@@ -273,6 +273,16 @@ body h1 {
     max-height: 300px; 
     object-fit: contain; 
   }
+
+  .illu-img-grand {
+    display: flex;
+    margin: 0 auto; 
+    max-width: 100%; 
+    height: auto; 
+    max-height: 500px; 
+    object-fit: contain; 
+  }
+
 
   
 @font-face {
