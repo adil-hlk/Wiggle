@@ -301,6 +301,10 @@ body {
     font-style: normal;
 }
 
+.propos {
+    background-color:#ccdcf1 ;
+    padding: 1em;
+}
 
 /*mentions legales*/
 .legale {
