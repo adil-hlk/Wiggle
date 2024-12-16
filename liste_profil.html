@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <title>Accueil</title>
+</head>
+<body>
+ <!-- Header & nav -->
+ <header>
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="navbar-logo">
+            <img src="assets/images/logo_chien_chat_V2.svg" alt="logo wiggle">
+        </div>
+
+        <!-- Liens de navigation -->
+        <ul class="nav-links">
+            <li><a href="chercher_sitter.html">Chercher un sitter</a></li>
+            <li><a href="devenir_sitter.html">Devenir un sitter</a></li>
+            <li><a href="#connexion">Se connecter/S'inscrire</a></li>
+            <li><a href="faq.html">FAQ/Contact</a></li>
+        </ul>
+
+        <!-- Menu burger -->
+        <div class="burger-menu" id="burgerMenu">
+            <img src="assets/images/menu-plein.svg" alt="Menu">
+        </div>
+    </nav>
+</header>
+
+<script>
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navLinks = document.querySelector('.nav-links');
+
+    burgerMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
+
+<main>
+
+    <div class="main bg-custom">
+        <div class="card" id="c1">
+            <img class="illu-img-petit" src="assets/images/loupe.svg" alt="loupe (trouver une pdp)">
+            <p class="fw-bold">Christophe</p>
+            <p>***** (notation)</p>
+            <p>J'ai été agréablement surpris par la gentillesse de mon sitter</p>
+        </div>
+        <div class="card" id="c2">
+            <img class="illu-img-petit" src="assets/images/loupe.svg" alt="loupe (trouver une pdp)">
+            <p class="fw-bold">Christophe</p>
+            <p>***** (notation)</p>
+            <p>J'ai été agréablement surpris par la gentillesse de mon sitter</p>
+        </div>
+        <div class="card" id="c3">
+            <img class="illu-img-petit" src="assets/images/loupe.svg" alt="loupe (trouver une pdp)">
+            <p class="fw-bold">Christophe</p>
+            <p>***** (notation)</p>
+            <p>J'ai été agréablement surpris par la gentillesse de mon sitter</p>
+        </div>
+        <div class="card" id="c4">
+            <img class="illu-img-petit" src="assets/images/loupe.svg" alt="loupe (trouver une pdp)">
+            <p class="fw-bold">Christophe</p>
+            <p>***** (notation)</p>
+            <p>J'ai été agréablement surpris par la gentillesse de mon sitter</p>
+        </div>
+    </div>
+    <section>
+        <img class="illu-img-moyen" src="assets/images/chat-couché.svg" alt="chat allongé">
+    </section>
+    
+
+</main>
+
+   <!-- Pied de page -->
+   <footer class="footer">
+    <div class="footer-top">
+        <p class="fw-bold">suivez nous sur nos réseaux</p>
+        <div class="footer-icons">
+            <a href="#" class="icon-effect"><img src="assets/images/facebook-app-round-white-icon.svg" alt="Facebook"></a>
+            <a href="#" class="icon-effect2"><img src="assets/images/instagram-white-icon.svg" alt="Instagram"></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span><a href="chercher_sitter.html">Chercher un sitter</a></span>
+        <span><a href="devenir_sitter.html">Devenir sitter</a></span>
+        <span><a href="faq.html">Aide</a></span>
+        <span>@2024 Wiggle | Mentions Légales - Tous droits réservés.</span>
+    </div>
+</footer>
+
+
+</body>
