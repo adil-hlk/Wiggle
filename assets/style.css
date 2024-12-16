@@ -303,7 +303,10 @@ body {
 
 .propos {
     background-color:#ccdcf1 ;
-    padding: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 6em;
+    padding-right: 6em;
 }
 
 .album-card {
@@ -357,9 +360,7 @@ body {
 .infos {
     background-color:#ccdcf1;
 }
-.maj {
-    font-weight:100;
-}
+
 
 /* Structure principale de liste des profils*/
 /* Container principal */
