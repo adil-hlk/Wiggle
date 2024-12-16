@@ -362,97 +362,65 @@ body {
 }
 
 /* Structure principale de liste des profils*/
+/* Container principal */
 .main {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    gap: 10px;
-    flex-wrap: wrap; /* Permet un meilleur comportement en responsive */
-    padding: 20px;
-    min-height: 50vh; /* Ajuste la hauteur minimum */
-    background-color: #fff2c2; /* Optionnel : couleur de fond */
+    min-height: 100vh;
+    background-color: #fff2c2; /* Couleur de fond */
+}
+
+/* Container des cartes */
+.container-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Pour aligner les cartes sur plusieurs lignes si nécessaire */
+    gap: 20px; /* Espacement entre les cartes */
 }
 
 /* Cartes */
 .card {
-    width: 190px;
-    height: 254px;
-    background: rgba(255, 231, 111, 0.37); /* Couleur avec opacité */
-    position: absolute;
-    box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
+    width: 200px;
+    height: 260px;
+    background: #ffe76f5e; /* Jaune avec opacité */
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-    transition: 0.3s ease-in-out;
-    cursor: pointer;
-    padding: 10px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-/* Images dans les cartes */
-.card img {
-    width: 60px;
-    height: auto;
-    margin: 0 auto;
-}
-
-/* Effets hover pour les cartes */
-.main:hover .card {
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.main:hover #c1 {
-    transform: translateX(-100px) rotate(-30deg);
-}
-
-.main:hover #c2 {
-    transform: translateX(-50px) rotate(-15deg);
-}
-
-.main:hover #c3 {
-    transform: translateX(50px) rotate(15deg);
-}
-
-.main:hover #c4 {
-    transform: translateX(100px) rotate(30deg);
-}
-
+/* Effet hover */
 .card:hover {
-    transform: scale(1.05) !important;
-    z-index: 10; /* Met en avant la carte survolée */
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive */
+/* Images dans les cartes */
+.illu-img-petit {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Police des titres */
+.fw-bold {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Responsive pour écrans plus petits */
 @media (max-width: 768px) {
+    .container-cards {
+        flex-direction: column;
+        align-items: center;
+    }
     .card {
-        width: 160px; /* Réduction de la taille pour mobile */
-        height: 220px;
-    }
-
-    .main {
-        flex-wrap: nowrap;
-        overflow-x: scroll; /* Permet un défilement horizontal si nécessaire */
-    }
-
-    .main:hover .card {
-        transform: none; /* Supprime les transformations en mode mobile */
-    }
-
-    .card:hover {
-        transform: scale(1.1);
-    }
-}
-
-@media (max-width: 480px) {
-    .card {
-        width: 140px;
-        height: 200px;
-    }
-
-    .main {
-        justify-content: flex-start; /* Aligne les cartes au début */
+        width: 90%; /* Prend presque toute la largeur */
     }
 }
 
