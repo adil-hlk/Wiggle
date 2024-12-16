@@ -11,15 +11,23 @@ body {
 
 /*section nav*/
 
+/* Structure générale */
 .navbar {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     padding: 1rem;
+    background-color: #f8f9fa; /* Couleur de fond claire */
+    position: relative;
+    z-index: 1000;
 }
 
+.navbar-logo img {
+    width: 120px; /* Taille raisonnable pour le logo */
+    height: auto;
+}
 
-
+/* Liens de navigation - mode desktop */
 .nav-links {
     display: flex;
     justify-content: space-around;
@@ -32,53 +40,54 @@ body {
     margin: 0 1rem;
 }
 
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #e99f01; /* Couleur survol */
+}
+
+/* Menu burger - caché en mode desktop */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+}
+
 .burger-menu img {
-    width: 30px;  /* Ajustez la taille de votre image si nécessaire */
+    width: 40px;
     height: auto;
 }
 
+/* Responsive - mode mobile */
 @media (max-width: 768px) {
     .burger-menu {
-        display: block;
-        cursor: pointer;
+        display: block; /* Affiche le menu burger */
     }
 
     .nav-links {
-        display: none;
+        display: none; /* Cache les liens */
         flex-direction: column;
-        width: 100%;
-        text-align: center;
-        padding: 0;
-        background-color: #fff;
+        align-items: center;
         position: absolute;
         top: 100%;
         left: 0;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-}
-@media (max-width: 768px) {
-    .burger-menu {
-        display: block;
-        cursor: pointer;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
         width: 100%;
-        text-align: center;
-        padding: 0;
-        background-color: #fff;
-        position: absolute;
-        top: 100%;
-        left: 0;
+        background-color: #f8f9fa;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        z-index: 1000;
     }
 
     .nav-links.active {
-        display: flex;
+        display: flex; /* Affiche les liens lorsque le menu burger est cliqué */
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
     }
 }
 
