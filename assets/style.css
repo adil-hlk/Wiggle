@@ -23,7 +23,7 @@ body {
 }
 
 .navbar-logo img {
-    width: 120px; /* Taille raisonnable pour le logo */
+    width: 300px; /* Taille raisonnable pour le logo */
     height: auto;
 }
 
