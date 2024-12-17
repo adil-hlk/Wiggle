@@ -140,6 +140,7 @@ body {
     justify-content: center;
     gap: 15px;
     margin-top: 10px;
+    min-width: 50px;
     max-width: 100px;
     height: auto;
 
@@ -361,6 +362,48 @@ body {
     background-color:#ccdcf1;
 }
 
+/*messagerie*/
+
+.wrapper {
+    max-width: 900px;
+    min-width: 500px;
+    display: flex;
+    margin: auto;
+}
+
+.left_pannel {
+    min-height: 500px;
+    background-color: #f8f9fa;
+    flex: 1;
+}
+
+.right_pannel {
+    min-height: 500px;
+    background-color: #fff2c2;
+    flex: 4;
+}
+
+.header_pannel {
+    background-color: #ccdcf1;
+    height: 70px;
+}
+
+.inner_left_pannel {
+    background-color: #e99f01;
+    flex: 1;
+    min-height: 430px;
+}
+
+.inner_right_pannel {
+    background-color: #4583BC;
+    flex: 1;
+    min-height: 430px;
+}
+
+.container_pannel {
+    display: flex;
+}
+
 
 /* Structure principale de liste des profils*/
 /* Container principal */
@@ -425,133 +468,6 @@ body {
     }
 }
 
-
-
-/* s'utilise "mt-n1, mt-n4,...*/
-
-/*section chat en direct*/
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    
-}
-
-.wrapper{
-    background: #f8f9fa;
-    max-width: 450px;
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5);
-}
-
-.form{
-    padding: 25px 30px;
-}
-
-.form header{
-    font-size: 25px;
-    font-weight: 600;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e6e6e6;
-}
-
-.form form{
-    margin: 20px 0;
-    color: #721c24;
-    padding: 8px 10px;
-    text-align: center;
-    border-radius: 5px;
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    margin-bottom: 10px;
-    display: none;
-}
-
-.form form .name-details{
-    display: flex;
-}
-
-.form .name-details .field:first-child{
-    margin-right: 10px;
-
-}
-
-.form .name-details .field:last-child{
-    margin-right: 10px;
-    
-}
-
-.form form .field{
-    display: flex;
-    margin-bottom: 10px;
-    flex-direction: column;
-    position: relative;
-}
-
-.form form .field label{
-    margin-bottom: 2px;
-}
-
-.form form .input input{
-    height: 40px;
-    width: 100%;
-    font-size: 16px;
-    padding:0 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.form form .field input{
-    outline: none;
-}
-
-.form form .image input{
-    font-size: 17px;
-}
-
-.form form .button input{
-    height: 45px;
-    border: none;
-    color: #fff;
-    font-size: 17px;
-    background: #3E424B;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 13px;
-}
-
-.form form .field i.active::before{
-    color: #3E424B;
-    content: "\f070";
-}
-
-.form .link{
-    text-align: center;
-    margin: 10px 0;
-    font-size: 17px;
-}
-
-.form .link a{
-    color: #3E424B;
-}
-
-.form .link a:hover{
-    text-decoration: underline;
-}
-
-.form form .error-text{
-    color:#721c24;
-    padding: 8px 10px;
-    text-align: center;
-    border-radius: 5px;
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    margin-bottom: 10px;
-    display: none;
-}
 
 
 /*section footer*/
