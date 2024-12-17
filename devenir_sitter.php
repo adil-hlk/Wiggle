@@ -42,28 +42,28 @@ get_header();
     <h2 class="text-uppercase fw-bold text-center">SERVICES</h2>
     <div class="row">
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-        <img class="illu-img-petit me-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat"/>
-            <div>
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat" width="20%"/>
+        <div>
                 <h3>Hébergement</h3>
                 <p>Votre animal de compagnie logera au domicile du pet-sitter.</p>
             </div>
         </div>
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-        <img class="illu-img-petit me-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-pelotte.svg" alt="chat sur une pelotte de laine"/>
-            <div>
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-pelotte.svg" alt="chat sur une pelotte de laine" width="20%"/>
+        <div>
                 <h3>Garderie</h3>
                 <p>Garderie de jour pour votre animal de compagnie.</p>
             </div>
         </div>
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-        <img class="illu-img-petit me-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo"/>
-            <div>
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo" width="20%"/>
+        <div>
                 <h3>Promenade</h3>
                 <p>Le sitter viendra à votre domicile et promènera votre animal de compagnie.</p>
             </div>
         </div>
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-        <img class="illu-img-petit me-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chat couché"/>
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chat couché" width="20%"/>
         <div>
                 <h3>Gardiennage de nuit</h3>
                 <p>Le sitter logera à votre domicile pendant votre absence.</p>
