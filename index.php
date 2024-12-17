@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img src="/assets/images/homme-chien-chat.svg" alt="illustration d'un maitre et son chien">
+                   <img src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-chien-chat.svg" alt="illustration d'un maitre et son chien"/>
                 </div>
                 <div class="col-md-6">
                     <h1 class="p-2 g-col-6">Un lien de confiance, pour des services de cœur à deux pas de chez vous.</h1>
