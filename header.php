@@ -26,7 +26,7 @@
         <nav class="navbar">
             <!-- Logo -->
             <div class="navbar-logo">
-                <img src="assets/images/logo_chien_chat_V2.svg" alt="logo wiggle">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_chien_chat_V2.svg" alt="logo Wiggle"/>
             </div>
     
             <!-- Liens de navigation -->

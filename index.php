@@ -45,7 +45,7 @@
         <div class="row">
                 <form class="col row justify-content-md-center col-lm-5 col-rm-5 align-items-center">
                     <div class="row">
-                        <label for="formulaire-à-choix4" class="fw-bold">Á quelle date</label>
+                        <label for="formulaire-à-choix4" class="fw-bold">À quelle date</label>
                       <div class="col">
                         <input type="text" class="form-control" placeholder="Jour">
                       </div>
@@ -65,7 +65,7 @@
             <div class="row">
                 <!-- Hébergement -->
                 <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                    <img class="illu-img-petit me-3" src="assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat">
+                    <img class="illu-img-petit me-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat"/>
                     <div>
                         <h4>Hébergement</h4>
                         <p>Votre animal de compagnie logera au domicile du pet-sitter.</p>
@@ -73,7 +73,7 @@
                 </div>
                 <!-- Garderie -->
                 <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                    <img class="illu-img-petit me-3" src="assets/images/chat-pelotte.svg" alt="chat sur pelotte de laine">
+                <img class="illu-img-petit me-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-pelotte.svg" alt="chat sur une pelotte de laine"/>
                     <div>
                         <h4>Garderie</h4>
                         <p>Garderie de jour pour votre animal de compagnie.</p>
@@ -81,7 +81,7 @@
                 </div>
                 <!-- Promenade -->
                 <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                    <img class="illu-img-petit me-3" src="assets/images/chien-velo.svg" alt="chien sur vélo">
+                <img class="illu-img-petit me-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo"/>
                     <div>
                         <h4>Promenade</h4>
                         <p>Le sitter viendra à votre domicile et promènera votre animal de compagnie.</p>
@@ -89,7 +89,7 @@
                 </div>
                 <!-- Gardiennage de nuit -->
                 <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                    <img class="illu-img-petit me-3" src="assets/images/chat-couché.svg" alt="chat couché">
+                <img class="illu-img-petit me-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chat couché"/>
                     <div>
                         <h4>Gardiennage de nuit</h4>
                         <p>Le sitter logera à votre domicile pendant votre absence.</p>
@@ -118,8 +118,7 @@
               
         </section>
         <section class="text-center p-5">
-
-            <img class="illu-img-moyen" src="assets/images/chiensetchatmain.svg" alt="chien et se tiennent la main">
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chiensetchatmain.svg" alt="chat et chien se tiennent la main"/>
 
 
         </section>

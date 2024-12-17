@@ -3,8 +3,8 @@
         <div class="footer-top">
             <p class="fw-bold">suivez nous sur nos réseaux</p>
             <div class="footer-icons">
-                <a href="#" class="icon-effect"><img src="assets/images/facebook-app-round-white-icon.svg" alt="Facebook"></a>
-                <a href="#" class="icon-effect2"><img src="assets/images/instagram-white-icon.svg" alt="Instagram"></a>
+                <a href="#" class="icon-effect"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/facebook-app-round-white-icon.svg" alt="facebook"/></a>
+                <a href="#" class="icon-effect2"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/instagram-white-icon.svg" alt="Instagram"/></a>
             </div>
         </div>
         <div class="footer-bottom pb-3">
