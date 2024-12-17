@@ -11,7 +11,7 @@
             <span><a href="chercher_sitter.html">Chercher un sitter</a></span>
             <span><a href="devenir_sitter.html">Devenir sitter</a></span>
             <span><a href="faq.html">Aide</a></span>
-            <span>@2024 Wiggle | <a href="mentions_legales.php">Mentions Légales</a> - Tous droits réservés.</span>
+            <span>@2024 Wiggle | <a href="<?php echo home_url('mentions_legales'); ?>">Mentions Légales</a> - Tous droits réservés.</span> 
         </div>
     </footer>
     <?php wp_footer(); ?>

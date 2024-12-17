@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php 
+/* Template Name: Mentions Légales */
+get_header(); 
+?>
 
     <main>
     <section class="infos">
@@ -92,7 +95,7 @@
     </section>
 
         <div class="container mentions">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/2pattes.svg" alt="deux pattes qui se touchent" width="70%"/>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/2pattes.svg" alt="deux pattes qui se touchent" width="50%"/>
         <div class="container p-3">
             <address class="adresse">
             Nom de la société : Build a Site
