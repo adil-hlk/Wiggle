@@ -33,7 +33,7 @@ get_header();
         
     </div>
 </section>
-<a href="#" class="btn-rechercher md-2" role="button" aria-disabled="true">Créer un compte</a>
+<a href="<?php echo home_url('sinscrire'); ?>" class="btn-rechercher md-2" role="button" aria-disabled="true">Créer un compte</a>
 <div class="container">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/2pattes.svg" alt="deux pattes qui se touchent" width="50%"/>
 </div>
@@ -74,7 +74,7 @@ get_header();
 
 <div class="container">
     <h2 class="text-uppercase fw-bold text-center">CONNECTEZ-VOUS ENTRE AMIS DES ANIMAUX</h2>
-    <a href="#" class="btn-rechercher md-2" role="button" aria-disabled="true">Créer un compte</a>
+    <a href="<?php echo home_url('sinscrire'); ?>" class="btn-rechercher md-2" role="button" aria-disabled="true">Créer un compte</a>
 </div>  
 <div class="container">
     <br><img src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo" width="60%"/>

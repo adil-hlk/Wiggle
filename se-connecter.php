@@ -1,3 +1,7 @@
+<?php 
+/* Template Name: Se connecter */
+get_header(); 
+?>
 
 <main>
     <section class="text-center p-5 bg-custom1">
@@ -26,27 +30,9 @@
 
 </section>
 <div class="flex-row-reverse p-5">
-    <img class="illu-img-moyen" src="assets/images/homme-saute-chat.svg" alt="hommme-saute sur son chat">
+    <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="un homme saute sur son chat"/>
 </div>
     
-    
-
-
 </main>
-<!-- Pied de page -->
-<footer class="footer">
-    <div class="footer-top">
-        <p class="fw-bold">suivez nous sur nos réseaux</p>
-        <div class="footer-icons">
-            <a href="#" class="icon-effect"><img src="assets/images/facebook-app-round-white-icon.svg" alt="Facebook"></a>
-            <a href="#" class="icon-effect2"><img src="assets/images/instagram-white-icon.svg" alt="Instagram"></a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <span><a href="chercher_sitter.html">Chercher un sitter</a></span>
-        <span><a href="devenir_sitter.html">Devenir sitter</a></span>
-        <span><a href="faq.html">Aide</a></span>
-        <span>@2024 Wiggle | Mentions Légales - Tous droits réservés.</span>
-    </div>
-</footer>
-</body>
+
+<?php get_footer(); ?>

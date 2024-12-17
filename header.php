@@ -35,8 +35,8 @@
             <ul class="nav-links">
                 <li><a href="<?php echo home_url('chercher-un-sitter'); ?>">Chercher un sitter</a></li>
                 <li><a href="<?php echo home_url('devenir-un-sitter'); ?>">Devenir un sitter</a></li>
-                <li><a href="se-connecter.html">Se connecter</a></li>
-                <li><a href="se-connecter.html">S'inscrire</a></li>
+                <li><a href="<?php echo home_url('se-connecter'); ?>">Se Connecter</a></li>
+                <li><a href="<?php echo home_url('sinscrire'); ?>">S'inscrire</a></li>
                 <li><a href="<?php echo home_url('aide'); ?>">FAQ/Contact</a></li>
             </ul>
     
