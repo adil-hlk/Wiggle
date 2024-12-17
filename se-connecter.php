@@ -19,8 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (is_wp_error($user)) {
         echo 'Erreur : ' . $user->get_error_message();
     } else {
-        wp_redirect(home_url('/')); // Redirige vers la page d'accueil
-        exit();
+       wp_redirect(home_url('aide/'));
     }
 }
 ?>
@@ -55,23 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
     
 </main>
-
-
-
-<!-- Formulaire de connexion -->
-<form method="POST" action="">
-    <label for="username">Nom d'utilisateur :</label>
-    <input type="text" name="username" id="username" required><br>
-
-    <label for="password">Mot de passe :</label>
-    <input type="password" name="password" id="password" required><br>
-
-    <label>
-        <input type="checkbox" name="remember"> Se souvenir de moi
-    </label><br>
-
-    <input type="submit" value="Se connecter">
-</form>
 
 
 <?php get_footer(); ?>

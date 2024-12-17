@@ -35,6 +35,17 @@ add_action('wp_enqueue_scripts', 'styles_scripts');
 
 // CUSTOM POSTS TYPES
 
+
+//function my_logged_in_redirect () {
+ // if (is_user_logged_in () && is_page(home_url('/se_connecter/'))) {
+  //wp_redirect(get_permalink(home_url('/aide/'))) ;
+ //die;}
+//}
+//add_action ('template_redirect' , 'my_logged_in_redirect');
+
+
+
+
 function create_post_type()
 {
   register_post_type('faqs', [
