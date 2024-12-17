@@ -42,7 +42,7 @@
     
             <!-- Menu burger -->
             <div class="burger-menu" id="burgerMenu">
-                <img src="assets/images/menu-plein.svg" alt="Menu">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu-plein.svg" alt="Menu"/>
             </div>
         </nav>
     </header>
