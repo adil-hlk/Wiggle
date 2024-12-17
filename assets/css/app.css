@@ -364,43 +364,43 @@ body {
 
 /*messagerie*/
 
-.wrapper{
+.wrapper {
     max-width: 900px;
     min-width: 500px;
     display: flex;
     margin: auto;
 }
 
-.left_pannel{
+.left_pannel {
     min-height: 500px;
     background-color: #f8f9fa;
     flex: 1;
 }
 
-.right_pannel{
+.right_pannel {
     min-height: 500px;
     background-color: #fff2c2;
     flex: 4;
 }
 
-.header_pannel{
+.header_pannel {
     background-color: #ccdcf1;
     height: 70px;
 }
 
-.inner_left_pannel{
+.inner_left_pannel {
     background-color: #e99f01;
     flex: 1;
     min-height: 430px;
 }
 
-.inner_right_pannel{
+.inner_right_pannel {
     background-color: #4583BC;
     flex: 1;
     min-height: 430px;
 }
 
-.container_pannel{
+.container_pannel {
     display: flex;
 }
 
