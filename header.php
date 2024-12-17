@@ -25,8 +25,10 @@
    <header>
         <nav class="navbar">
             <!-- Logo -->
-            <div class="navbar-logo">
+            <div class="navbar-logo"> 
+              <a href="<?php echo home_url('/'); ?>">
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_chien_chat_V2.svg" alt="logo Wiggle"/>
+            </a>
             </div>
     
             <!-- Liens de navigation -->

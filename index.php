@@ -45,7 +45,7 @@
         <div class="row">
                 <form class="col row justify-content-md-center col-lm-5 col-rm-5 align-items-center">
                     <div class="row">
-                        <label for="formulaire-à-choix4" class="fw-bold">À quelle date</label>
+                        <label for="formulaire-à-choix4" class="fw-bold">À quelle date ?</label>
                       <div class="col">
                         <input type="text" class="form-control" placeholder="Jour">
                       </div>

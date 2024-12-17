@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <h1  class="text-uppercase fw-bold col-10 col-md-11 order-1 order-md-1 text-start">POLITIQUE ET CONFIDENTIALITÉ</h1>
-            <img class="col-2 col-md-1 order-2 order-md-2 justify-content-md-end d-flex" src="assets/images/drapeau.svg" alt="drapeau">
+            <img class="col-2 col-md-1 order-2 order-md-2 justify-content-md-end d-flex" src="<?php echo get_template_directory_uri(); ?>/assets/images/drapeau.svg" alt="drapeau"/>
         </div>
     </div>
     <div class="container">
@@ -91,7 +91,8 @@
     </div> 
     </section>
 
-        <div class="container mentions"><img src="assets/images/2pattes.svg" alt="deux pattes" width="70%"></div>
+        <div class="container mentions">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/2pattes.svg" alt="deux pattes qui se touchent" width="70%"/>
         <div class="container p-3">
             <address class="adresse">
             Nom de la société : Build a Site
