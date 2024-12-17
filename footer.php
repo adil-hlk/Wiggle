@@ -7,13 +7,13 @@
                 <a href="#" class="icon-effect2"><img src="assets/images/instagram-white-icon.svg" alt="Instagram"></a>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom pb-3">
             <span><a href="chercher_sitter.html">Chercher un sitter</a></span>
             <span><a href="devenir_sitter.html">Devenir sitter</a></span>
             <span><a href="faq.html">Aide</a></span>
-            <span>@2024 Wiggle | <a href="#">Mentions Légales</a> - Tous droits réservés.</span>
+            <span>@2024 Wiggle | <a href="mentions_legales.php">Mentions Légales</a> - Tous droits réservés.</span>
         </div>
-    </footer> 
+    </footer>
     <?php wp_footer(); ?>
 </body>
 </html>
