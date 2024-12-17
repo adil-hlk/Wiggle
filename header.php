@@ -4,30 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
   <?php wp_head(); ?>
+      <script>
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.querySelector('.nav-links');
+    
+        burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </head>
 
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-      <a class="navbar-brand" href="<?php echo home_url('/'); ?>">
-        Home
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <?php
-        wp_nav_menu([
-          'theme_location' => 'header',
-          'container' => false,
-          'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0'
-        ]);
-
-        echo get_search_form();
-        ?>
-      </div>
-    </div>
-  </nav>
+   <!-- Header & nav -->
+   <header>
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <img src="assets/images/logo_chien_chat_V2.svg" alt="logo wiggle">
+            </div>
+    
+            <!-- Liens de navigation -->
+            <ul class="nav-links">
+                <li><a href="chercher_sitter.html">Chercher un sitter</a></li>
+                <li><a href="devenir_sitter.html">Devenir un sitter</a></li>
+                <li><a href="se-connecter.html">Se connecter/S'inscrire</a></li>
+                <li><a href="faq.html">FAQ/Contact</a></li>
+            </ul>
+    
+            <!-- Menu burger -->
+            <div class="burger-menu" id="burgerMenu">
+                <img src="assets/images/menu-plein.svg" alt="Menu">
+            </div>
+        </nav>
+    </header>
