@@ -25,7 +25,7 @@ get_header();
 </div>
           </form>
               <br>
-<br> <span class="mx-auto"><a href="#">mot de passe oublié</a></span>
+<br> <span class="mx-auto"><a href="<?php echo home_url('mot-de-passe-oublie'); ?>">mot de passe oublié</a></span>
           </form>
 
 </section>
