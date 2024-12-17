@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="assets/style.css">
-<title>FAQ</title>
-</head>
+<?php 
+/* Template Name: Aide */
+get_header(); 
+?>
 
 <main>
 <section class="container p-5">
@@ -96,8 +90,7 @@
         </div>
       </div>
 </section>
-      <img class="illu-img-moyen" src="assets/images/chat-interogation.svg" alt="Chat se posant une question">
-
+      <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-interogation.svg" alt="chat se posant une question"/>
       <section class="p-5 bg-custom">
         <h2 class="text-uppercase fw-bold text-start">FORMULAIRE DE CONTACT</h2>
         <div class="row">
@@ -125,3 +118,4 @@
   </div>
 </main>
 
+<?php get_footer(); ?>

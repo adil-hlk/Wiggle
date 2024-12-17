@@ -36,7 +36,7 @@
                 <li><a href="chercher_sitter.html">Chercher un sitter</a></li>
                 <li><a href="devenir_sitter.html">Devenir un sitter</a></li>
                 <li><a href="se-connecter.html">Se connecter/S'inscrire</a></li>
-                <li><a href="faq.html">FAQ/Contact</a></li>
+                <li><a href="<?php echo home_url('aide'); ?>">FAQ/Contact</a></li>
             </ul>
     
             <!-- Menu burger -->
