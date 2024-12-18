@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (is_wp_error($user)) {
         echo 'Erreur : ' . $user->get_error_message();
     } else {
-       wp_redirect(home_url('/aide/')) ;
+       wp_redirect(home_url('/')) ;
         exit;
     }
 }

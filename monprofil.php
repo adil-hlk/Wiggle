@@ -1,51 +1,39 @@
 <?php 
-$currentuser = wp_get_current_user();
+$currentuser = wp_get_current_user() ;
 /* Template Name: Mon Profil */
 get_header(); 
 ?>
 
 <section id="profil">
-    <div class="container p-5">
-        <div class="album-card">
-            <div class="album-photo">
-                <p class="p-5">album</p>
-            </div>
-            <div class="profile-photo">
-                <p class="p-4">photo</p>
-            </div>
-            <div class="user-name">
-                <?php echo $currentuser -> ID;?>
-            </div>
-        </div>
+    <div class="container">
+            <?php echo get_avatar ($currentuser -> ID, 100, 'mm', 'photo de profil', array('class' => 'rounded-circle'))?>
+            <?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?>
     </div>
 </section>
 
 <section id="propos" class="propos">
     <div class="container">
-    <div class="row">
-        <h2 class="text-uppercase fw-bold col-9 col-md-11 order-1 order-md-1 text-start">À propos de XXX</h2>
-        <img class="col-3 col-md-1 order-2 order-md-2 justify-content-md-end d-flex" src="assets/images/crayon.svg" alt="modifier" width="50%">
+        <div>
+            <h2 class="text-uppercase fw-bold col-9 col-md-11 order-1 order-md-1 text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h2>
+            <p class="text-start"><?php echo $currentuser -> description; ?></p>
+        </div>
     </div>
-    </div>
-    <p class="text-start">Passionnée par les animaux depuis toujours, je suis une étudiante en médecine vétérinaire qui adore passer du temps avec nos amis à poils. Que ce soit pour une promenade, une garde de nuit ou simplement une visite câline, je m'assure que chaque compagnon se sente aimé et en sécurité. J’habite à proximité d’un grand parc, parfait pour les promenades !</p>
 </section>
 
 <section class="container">
     <div class="row align-items-center">
-    <h2 class="text-uppercase fw-bold text-start">XXX peut prendre en charge</h2>
+    <h2 class="text-uppercase fw-bold text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?> peut prendre en charge</h2>
     
     </div>
     <div class="row align-items-center">
-            <img class="col-2 col-md-2" src="assets/images/crayon.svg" alt="modifier" width="50%">
             <img class="col-4 col-md-4" src="assets/images/chat-couché.svg" alt="chien">
             <img class="col-4 col-md-4" src="assets/images/chien-femme.svg" alt="chat">
     </div>
 </section>
 
 <section id="services" class="services p-5">
-    <div class="row align-items-center">
-        <h2 class="text-uppercase fw-bold col-9 col-md-11 order-1 order-md-1 text-start">XXX propose</h2>
-        <img class="col-3 col-md-1 order-2 order-md-2 justify-content-md-end d-flex" src="assets/images/crayon.svg" alt="modifier" width="50%">
+    <div class="container">
+        <h2 class="text-uppercase fw-bold col-9 col-md-11 order-1 order-md-1 text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?> propose</h2>
     </div>
     <div class="row">
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
