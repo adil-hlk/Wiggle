@@ -3,6 +3,7 @@ $currentuser = wp_get_current_user();
 /* Template Name: Mon Profil */
 get_header(); 
 ?>
+<?php if (function_exists('front_end_pm')) front_end_pm(); ?>
 
 <section id="profil">
     <div class="container p-5">
