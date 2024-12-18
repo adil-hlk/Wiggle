@@ -96,6 +96,9 @@ get_header();
 
 <section  class="container pt-2">
     <h2 class="text-uppercase fw-bold text-start pt-2">disponibilité</h2>
+
+
+
 </section>
 
 
