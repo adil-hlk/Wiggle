@@ -7,15 +7,15 @@ get_header();
 <section id="profil" class="propos">
     <div class="row align-item-center">
         <div class="col-md-6">
-            <div>
-                <?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?> <br>
+            <div class="container">
+                <div class ="text-uppercase fw-bold pt-3"><?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?></div> <br>
                 <?php echo get_avatar ($currentuser -> ID, 250, 'mm', 'photo de profil') ?> 
             </div>
             <div>
-                modifier le profil
+                <a href="<?php echo home_url('modifier'); ?>">modifier mon profil</a>
             </div>
         </div>
-        <div class="col-md-6 align-item-right">
+        <div class="col-md-6 align-item-right pt-3">
             <h3 class="text-uppercase fw-bold text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h3>
             <p class="text-start"><?php echo $currentuser -> description; ?></p>
         </div>
@@ -28,8 +28,8 @@ get_header();
     
     </div>
     <div class="row align-items-center">
-            <img class="col-4 col-md-4" src="assets/images/chat-couché.svg" alt="chien">
-            <img class="col-4 col-md-4" src="assets/images/chien-femme.svg" alt="chat">
+            <img class="col-4 col-md-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chien"/>
+            <img class="col-4 col-md-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-femme.svg" alt="chat"/>
     </div>
 </section>
 
