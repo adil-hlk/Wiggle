@@ -113,5 +113,90 @@ get_header();
 
 </section>
 
+<section>
+  <h2 class="text-uppercase fw-bold text-start pt-2">RECHERCHER</h2>
+
+  <!-- Champ de recherche par texte -->
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a region..." title="Type in a region name">
+
+  <!-- Sélection multiple pour les services -->
+  <select id="serviceFilter" multiple onchange="myFunction()" title="Select services">
+    <option value="Promenade">Promenade</option>
+    <option value="Hébergement">Hébergement</option>
+    <option value="Garderie">Garderie</option>
+    <option value="Garderie de nuit">Gardenerie de nuit</option>
+  </select>
+
+  <table id="myTable">
+    <tr class="header">
+      <th style="width:30%;">Nom</th>
+      <th style="width:30%;">Région</th>
+      <th style="width:40%;">Service</th>
+    </tr>
+    <tr>
+      <td>Alfreds Futterkiste</td>
+      <td>Liège</td>
+      <td>Garderie</td>
+    </tr>
+    <tr>
+      <td>Berglunds snabbkop</td>
+      <td>Mons</td>
+      <td>Promenade</td>
+    </tr>
+    <tr>
+      <td>Island Trading</td>
+      <td>Wavre</td>
+      <td>Hébergement</td>
+    </tr>
+    <tr>
+      <td>Koniglich Essen</td>
+      <td>Namur</td>
+      <td>Garderie de nuit</td>
+    </tr>
+  </table>
+</section>
+ <script>
+function myFunction() {
+  var input, filter, serviceFilter, selectedServices, table, tr, td, i, txtValue, matchFound;
+  
+  // Recherche par texte
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+
+  // Sélection des services
+  serviceFilter = document.getElementById("serviceFilter");
+  selectedServices = Array.from(serviceFilter.selectedOptions).map(option => option.value.toUpperCase());
+
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Parcourir toutes les lignes (tr), sauf la première (en-tête)
+  for (i = 1; i < tr.length; i++) {
+    tr[i].style.display = "none"; // Masquer toutes les lignes par défaut
+    td = tr[i].getElementsByTagName("td");
+    matchFound = false;
+
+    // Vérifier la recherche par texte
+    if (td) {
+      // Vérifier le nom ou le pays
+      txtValue = (td[0].textContent || td[0].innerText) + " " + (td[1].textContent || td[1].innerText);
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        matchFound = true;
+      }
+
+      // Vérifier si le service correspond aux choix multiples
+      var serviceValue = (td[2].textContent || td[2].innerText).toUpperCase();
+      if (selectedServices.length > 0 && !selectedServices.includes(serviceValue)) {
+        matchFound = false; // Masquer si le service ne correspond pas
+      }
+    }
+
+    // Afficher la ligne si une correspondance est trouvée
+    if (matchFound) {
+      tr[i].style.display = "";
+    }
+  }
+}
+</script>
 
 <?php get_footer(); ?>
