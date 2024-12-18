@@ -2,20 +2,22 @@
  get_header(); 
 ?>
 
-<main>
-    <div id="wrapper">
-        <div id="left_pannel"></div>
+<div class="chat-box">
+  <div class="chat-header">
+    <h3>Chat</h3>
+  </div>
+  <div class="chat-messages">
+    <!-- Les messages seront ajoutés ici dynamiquement -->
+  </div>
+  <form class="chat-input" id="chatForm">
+    <input
+      type="text"
+      id="chatMessage"
+      placeholder="Écrivez un message..."
+      required
+    />
+    <button class="btn-rechercher md-2" type="submit">Envoyer</button>
+  </form>
+</div>
 
-        <div id="right_pannel">
-
-            <div id="header_pannel"> Ma messagerie </div>
-            <div id="container_pannel">
-
-                <div id="inner_left_pannel"></div>
-                <div id="inner_right_pannel"></div>
-
-            </div>
-        </div>
-    </div>
-</main>
 <?php get_footer(); ?>

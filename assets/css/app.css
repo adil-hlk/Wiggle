@@ -364,47 +364,78 @@ body {
 
 /*messagerie*/
 
-.wrapper {
-    max-width: 900px;
-    min-width: 500px;
+/* Chat Box */
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1000;
     display: flex;
-    margin: auto;
-}
-
-.left_pannel {
-    min-height: 500px;
-    background-color: #f8f9fa;
+    flex-direction: column;
+  }
+  
+  .chat-header {
+    background-color: #4583bc;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .chat-messages {
     flex: 1;
-}
-
-.right_pannel {
-    min-height: 500px;
-    background-color: #fff2c2;
-    flex: 4;
-}
-
-.header_pannel {
-    background-color: #ccdcf1;
-    height: 70px;
-}
-
-.inner_left_pannel {
-    background-color: #e99f01;
-    flex: 1;
-    min-height: 430px;
-}
-
-.inner_right_pannel {
-    background-color: #4583BC;
-    flex: 1;
-    min-height: 430px;
-}
-
-.container_pannel {
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 300px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .chat-messages .message {
+    margin: 5px 0;
+  }
+  
+  .chat-messages .message.user {
+    text-align: right;
+    color: #4583bc;
+  }
+  
+  .chat-messages .message.bot {
+    text-align: left;
+    color: #333;
+  }
+  
+  .chat-input {
     display: flex;
-}
-
-
+    padding: 5px;
+    gap: 5px;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .chat-input button {
+    background-color: #4583bc;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .chat-input button:hover {
+    background-color: #3568a4;
+  }
+  
 /* Structure principale de liste des profils*/
 /* Container principal */
 .main {

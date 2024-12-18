@@ -33,6 +33,40 @@ function styles_scripts()
 }
 add_action('wp_enqueue_scripts', 'styles_scripts');
 
+function enqueue_messagerie_styles() {
+  if (is_page_template('messagerie.php')) {
+      wp_enqueue_style('messagerie-style', get_template_directory_uri() . '/assets/css/app.css');
+  }
+}
+
+//chatBox
+add_action('wp_enqueue_scripts', 'enqueue_messagerie_styles');
+
+function create_chat_table() {
+  global $wpdb; // Accès à l'objet global $wpdb.
+  $table_name = $wpdb->prefix . 'chat_messages'; // Préfixe WordPress + nom de la table.
+
+  $charset_collate = $wpdb->get_charset_collate(); // Obtenir l'encodage de la base de données.
+
+  // SQL pour créer la table.
+  $sql = "CREATE TABLE $table_name (
+      id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+      sender_id BIGINT(20) UNSIGNED NOT NULL,
+      receiver_id BIGINT(20) UNSIGNED NOT NULL,
+      message TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+      PRIMARY KEY (id)
+  ) $charset_collate;";
+
+  require_once(ABSPATH . 'wp-admin/includes/upgrade.php'); // Charger le fichier pour les fonctions d'installation.
+  dbDelta($sql); // Exécuter la requête SQL.
+}
+
+// Appeler la fonction lors de l'activation du thème ou du plugin.
+register_activation_hook(__FILE__, 'create_chat_table');
+
+
+
 // CUSTOM POSTS TYPES
 
 
