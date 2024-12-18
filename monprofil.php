@@ -3,19 +3,20 @@ $currentuser = wp_get_current_user() ;
 /* Template Name: Mon Profil */
 get_header(); 
 ?>
-<?php if (function_exists('front_end_pm')) front_end_pm(); ?>
 
-<section id="profil">
-    <div class="container">
-            <?php echo get_avatar ($currentuser -> ID, 100, 'mm', 'photo de profil', array('class' => 'rounded-circle'))?>
-            <?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?>
-    </div>
-</section>
-
-<section id="propos" class="propos">
-    <div class="container">
-        <div>
-            <h2 class="text-uppercase fw-bold col-9 col-md-11 order-1 order-md-1 text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h2>
+<section id="profil" class="propos">
+    <div class="row align-item-center">
+        <div class="col-md-6">
+            <div>
+                <?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?> <br>
+                <?php echo get_avatar ($currentuser -> ID, 250, 'mm', 'photo de profil') ?> 
+            </div>
+            <div>
+                modifier le profil
+            </div>
+        </div>
+        <div class="col-md-6 align-item-right">
+            <h3 class="text-uppercase fw-bold text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h3>
             <p class="text-start"><?php echo $currentuser -> description; ?></p>
         </div>
     </div>
