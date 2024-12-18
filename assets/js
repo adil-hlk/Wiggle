@@ -1,0 +1,13 @@
+function toggleElementVisibility() {
+    const checkbox = document.getElementById('toggleCheckbox');
+    const elementToToggle = document.getElementById('elementId');
+
+    if (checkbox.checked) {
+        elementToToggle.style.display = 'block'; // Afficher l'élément
+    } else {
+        elementToToggle.style.display = 'none'; // Cacher l'élément
+    }
+}
+
+// Écoutez l'événement de changement de la checkbox
+document.getElementById('toggleCheckbox').addEventListener('change', toggleElementVisibility);

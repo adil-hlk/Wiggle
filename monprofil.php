@@ -27,9 +27,11 @@ get_header();
     <h2 class="text-uppercase fw-bold text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?> peut prendre en charge</h2>
     
     </div>
+    <div class="container">
     <div class="row align-items-center">
-            <img class="col-4 col-md-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chien"/>
-            <img class="col-4 col-md-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-femme.svg" alt="chat"/>
+            <img class="col-6 col-md-6" src="<?php echo get_template_directory_uri(); ?>/assets/images/.svg" alt="chien"/>
+            <img class="col-6 col-md-6" src="<?php echo get_template_directory_uri(); ?>/assets/images/.svg" alt="chat"/>
+    </div>
     </div>
 </section>
 
