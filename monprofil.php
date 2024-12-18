@@ -1,10 +1,8 @@
-<head><meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <title>Mon profil</title>
-</head>
+<?php 
+$currentuser = wp_get_current_user();
+/* Template Name: Mon Profil */
+get_header(); 
+?>
 
 <section id="profil">
     <div class="container p-5">
@@ -16,7 +14,7 @@
                 <p class="p-4">photo</p>
             </div>
             <div class="user-name">
-                <p>Lerouge Sarah</p>
+                <?php echo $currentuser -> ID;?>
             </div>
         </div>
     </div>
@@ -51,29 +49,29 @@
     </div>
     <div class="row">
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-            <img class="illu-img-petit me-3" src="assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat">
-            <div>
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat" width="20%"/>
+        <div>
                 <h3>Hébergement</h3>
                 <p>Votre animal de compagnie logera au domicile du pet-sitter.</p>
             </div>
         </div>
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-            <img class="illu-img-petit me-3" src="assets/images/chat-pelotte.svg" alt="chat sur pelotte de laine">
-            <div>
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-pelotte.svg" alt="chat sur une pelotte de laine" width="20%"/>
+        <div>
                 <h3>Garderie</h3>
                 <p>Garderie de jour pour votre animal de compagnie.</p>
             </div>
         </div>
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-            <img class="illu-img-petit me-3" src="assets/images/chien-velo.svg" alt="chien sur vélo">
-            <div>
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo" width="20%"/>
+        <div>
                 <h3>Promenade</h3>
                 <p>Le sitter viendra à votre domicile et promènera votre animal de compagnie.</p>
             </div>
         </div>
         <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-            <img class="illu-img-petit me-3" src="assets/images/chat-couché.svg" alt="chat couché">
-            <div>
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chat couché" width="20%"/>
+        <div>
                 <h3>Gardiennage de nuit</h3>
                 <p>Le sitter logera à votre domicile pendant votre absence.</p>
             </div>
@@ -82,7 +80,7 @@
 </section>
 
 <div class="container">
-    <img src="assets/images/2pattes.svg" alt="se serrer la patte" width="60%">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/2pattes.svg" alt="deux pattes qui se touchent" width="50%"/>
 </div>
 
 <section id="Avis" class="text-center p-5 bg-custom1"> 
@@ -103,7 +101,7 @@
 </section>
 
 <section class="container pt-2">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80598.65185362665!2d4.293016035002747!3d50.855093690325525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3a4ed73c76867%3A0xc18b3a66787302a7!2sBrussels!5e0!3m2!1sen!2sbe!4v1734356104826!5m2!1sen!2sbe" width="90%" height="50%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80598.65185362665!2d4.293016035002747!3d50.855093690325525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3a4ed73c76867%3A0xc18b3a66787302a7!2sBrussels!5e0!3m2!1sen!2sbe!4v1734356104826!5m2!1sen!2sbe" width="90%" height="80%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 
 <section  class="container pt-2">
@@ -111,4 +109,4 @@
 </section>
 
 
-
+<?php get_footer(); ?>

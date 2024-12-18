@@ -23,7 +23,7 @@
 
    <!-- Header & nav -->
    <header>
-        <nav class="navbar">
+        <nav class="navbar p-4">
             <!-- Logo -->
             <div class="navbar-logo"> 
               <a href="<?php echo home_url('/'); ?>">
@@ -40,7 +40,7 @@
                 <li><a href="<?php echo home_url('sinscrire'); ?>">S'inscrire</a></li>
                 <?php endif; ?>
                 <?php if (is_user_logged_in()):?>
-                    <li><a href="<?php echo home_url(''); ?>">Mon Profil</a></li>
+                    <li><a href="<?php echo home_url('mon-profil'); ?>">Mon Profil</a></li>
                 <?php endif; ?>
                 <li><a href="<?php echo home_url('aide'); ?>">FAQ/Contact</a></li>
             </ul>
