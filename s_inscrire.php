@@ -1,10 +1,3 @@
-<?php 
-/* Template Name: S'inscrire */
-get_header(); 
-?>
-
-<main>
-
 <?php
 // Vérifie si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -19,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Crée un nouvel utilisateur
         $user_id = wp_create_user($username, $password, $email);
         if (!is_wp_error($user_id)) {
-            echo 'Inscription réussie. Vous pouvez maintenant vous connecter.';
+            wp_redirect(home_url('/se-connecter/'));
+            exit;
             update_user_meta($user_id,'first_name', $firstname);
             update_user_meta($user_id, 'last_name', $lastname);
         } else {
@@ -30,6 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
+<?php 
+/* Template Name: S'inscrire */
+get_header(); 
+?>
+
+<main>
+
+
     <section class="text-center p-5 bg-custom1">
         <div class="container">
         <div class="row">

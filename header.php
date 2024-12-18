@@ -17,7 +17,7 @@
         });
     </script>
 </head>
-
+            
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
 
@@ -39,7 +39,11 @@
                 <li><a href="<?php echo home_url('sinscrire'); ?>">S'inscrire</a></li>
                 <li><a href="<?php echo home_url('aide'); ?>">FAQ/Contact</a></li>
             </ul>
-    
+            <!-- Connecté ou oas -->
+            <?php if (is_user_logged_in()): // si je suis connecté ?>
+            <a href="<?php echo wp_logout_url(home_url('/')); // lien généré par wordpress pour déconnexion ?>">Déconnexion</a>
+            <?php endif; ?>
+
             <!-- Menu burger -->
             <div class="burger-menu" id="burgerMenu">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu-plein.svg" alt="Menu"/>

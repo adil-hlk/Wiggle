@@ -1,10 +1,9 @@
-<?php 
-/* Template Name: Se connecter */
-get_header(); 
-?>
-
-<main>
 <?php
+if (is_user_logged_in()) {
+    // si je suis déjà connecté je suis redirigé vers la page home
+    wp_redirect( home_url('/aide/') );
+      exit;
+     }
 // Vérifie si le formulaire de connexion a été soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $credentials = array(
@@ -19,10 +18,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (is_wp_error($user)) {
         echo 'Erreur : ' . $user->get_error_message();
     } else {
-       wp_redirect(home_url('aide/'));
+       wp_redirect(home_url('/aide/')) ;
+        exit;
     }
 }
 ?>
+
+<?php 
+/* Template Name: Se connecter */
+get_header(); 
+?>
+
+<main>
+
     <section class="text-center p-5 bg-custom1">
     <div class="container">
     <div class="row">
@@ -41,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <label class="form-check-label">se souvenir de moi</label>
             </div>
         </div>
-        <br><input class="btn-rechercher md-2" type="submit" role="button" value ="se connecter">
+        <br><input class="btn-rechercher md-2" type="submit" value ="se connecter">
 </div>
           </form>
               <br>
