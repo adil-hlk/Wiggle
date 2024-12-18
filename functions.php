@@ -39,31 +39,54 @@ function enqueue_messagerie_styles() {
   }
 }
 
-//chatBox
-add_action('wp_enqueue_scripts', 'enqueue_messagerie_styles');
+// agenda/calendrier
 
-function create_chat_table() {
-  global $wpdb; // Accès à l'objet global $wpdb.
-  $table_name = $wpdb->prefix . 'chat_messages'; // Préfixe WordPress + nom de la table.
+function display_availability_form() {
+  if (!is_user_logged_in()) {
+      return '<p>Veuillez vous connecter pour soumettre vos disponibilités.</p>';
+  }
 
-  $charset_collate = $wpdb->get_charset_collate(); // Obtenir l'encodage de la base de données.
+  ob_start(); ?>
+  <form method="post">
+      <label for="availability_date">Date :</label>
+      <input type="date" id="availability_date" name="availability_date" required>
+      
+      <label for="availability_start_time">Heure de début :</label>
+      <input type="time" id="availability_start_time" name="availability_start_time" required>
+      
+      <label for="availability_end_time">Heure de fin :</label>
+      <input type="time" id="availability_end_time" name="availability_end_time" required>
+      
+      <input type="submit" name="submit_availability" value="Ajouter Disponibilité">
+  </form>
+  <?php
 
-  // SQL pour créer la table.
-  $sql = "CREATE TABLE $table_name (
-      id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-      sender_id BIGINT(20) UNSIGNED NOT NULL,
-      receiver_id BIGINT(20) UNSIGNED NOT NULL,
-      message TEXT NOT NULL,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-      PRIMARY KEY (id)
-  ) $charset_collate;";
-
-  require_once(ABSPATH . 'wp-admin/includes/upgrade.php'); // Charger le fichier pour les fonctions d'installation.
-  dbDelta($sql); // Exécuter la requête SQL.
+  return ob_get_clean();
 }
+add_shortcode('availability_form', 'display_availability_form');
 
-// Appeler la fonction lors de l'activation du thème ou du plugin.
-register_activation_hook(__FILE__, 'create_chat_table');
+function save_user_availability() {
+  if (isset($_POST['submit_availability'])) {
+      $user_id = get_current_user_id();
+      $date = sanitize_text_field($_POST['availability_date']);
+      $start_time = sanitize_text_field($_POST['availability_start_time']);
+      $end_time = sanitize_text_field($_POST['availability_end_time']);
+      
+      $post_id = wp_insert_post(array(
+          'post_type' => 'availability',
+          'post_title' => "Disponibilité de l'utilisateur $user_id",
+          'post_status' => 'publish',
+          'post_author' => $user_id,
+      ));
+
+      if ($post_id) {
+          update_post_meta($post_id, 'availability_date', $date);
+          update_post_meta($post_id, 'availability_start_time', $start_time);
+          update_post_meta($post_id, 'availability_end_time', $end_time);
+      }
+  }
+}
+add_action('init', 'save_user_availability');
 
 
 
