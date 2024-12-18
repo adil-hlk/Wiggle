@@ -35,11 +35,17 @@
             <ul class="nav-links">
                 <li><a href="<?php echo home_url('chercher-un-sitter'); ?>">Chercher un sitter</a></li>
                 <li><a href="<?php echo home_url('devenir-un-sitter'); ?>">Devenir un sitter</a></li>
+                <?php if (!is_user_logged_in()):?>
                 <li><a href="<?php echo home_url('se-connecter'); ?>">Se Connecter</a></li>
                 <li><a href="<?php echo home_url('sinscrire'); ?>">S'inscrire</a></li>
+                <?php endif; ?>
+                <?php if (is_user_logged_in()):?>
+                    <li><a href="<?php echo home_url(''); ?>">Mon Profil</a></li>
+                <?php endif; ?>
                 <li><a href="<?php echo home_url('aide'); ?>">FAQ/Contact</a></li>
             </ul>
-            <!-- Connecté ou oas -->
+            
+            <!-- Connecté ou pas -->
             <?php if (is_user_logged_in()): // si je suis connecté ?>
             <a href="<?php echo wp_logout_url(home_url('/')); // lien généré par wordpress pour déconnexion ?>">Déconnexion</a>
             <?php endif; ?>
