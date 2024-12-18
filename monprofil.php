@@ -16,24 +16,32 @@ get_header();
             </div>
         </div>
         <div class="col-md-6 align-item-right pt-3">
-            <h3 class="text-uppercase fw-bold text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h3>
-            <p class="text-start"><?php echo $currentuser -> description; ?></p>
+            <div class="container">
+                <div>
+                    <h3 class="text-uppercase fw-bold text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h3>
+                    <p class="text-start"><?php echo $currentuser -> description; ?></p>
+                </div>
+                <div>
+                    <div class="row align-items-center pt-3">
+                        <h3 class="text-uppercase fw-bold text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?> peut prendre en charge</h3>
+                    </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tetechien.svg" alt="chien" width="40%"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tetechat.svg" alt="chat" width="40%"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 </section>
 
-<section class="container">
-    <div class="row align-items-center">
-    <h2 class="text-uppercase fw-bold text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?> peut prendre en charge</h2>
-    
-    </div>
-    <div class="container">
-    <div class="row align-items-center">
-            <img class="col-6 col-md-6" src="<?php echo get_template_directory_uri(); ?>/assets/images/.svg" alt="chien"/>
-            <img class="col-6 col-md-6" src="<?php echo get_template_directory_uri(); ?>/assets/images/.svg" alt="chat"/>
-    </div>
-    </div>
-</section>
+
 
 <section id="services" class="services p-5">
     <div class="container">
@@ -75,8 +83,10 @@ get_header();
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/2pattes.svg" alt="deux pattes qui se touchent" width="50%"/>
 </div>
 
-<section id="Avis" class="text-center p-5 bg-custom1"> 
+<section id="Avis" class="text-center p-5 bg-custom1">
+    <div class="container">
     <h2 class="text-uppercase fw-bold text-start">AVIS</h2>
+    </div>
     <div class="carousel-container">
         <div class="container1">
           <div class="glass" data-text="Avis de Paul : Excellent service !">
