@@ -88,6 +88,23 @@ function save_user_availability() {
 }
 add_action('init', 'save_user_availability');
 
+//sitter ou chercheur
+function get_sitters() {
+  global $wpdb;
+
+  $sitters = $wpdb->get_results(
+      "SELECT * FROM {$wpdb->users} WHERE is_sitter = 1"
+  );
+
+  return $sitters;
+}
+
+// Exemple d'utilisation
+$sitters = get_sitters();
+foreach ($sitters as $sitter) {
+  echo "Nom : {$sitter->user_login}, Email : {$sitter->user_email}<br>";
+}
+
 
 
 // CUSTOM POSTS TYPES

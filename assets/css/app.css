@@ -408,6 +408,50 @@ body {
     padding: 10px;
   }
 
+  /* Styles pour la barre de recherche */
+#searchInput {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Styles pour la liste déroulante */
+#serviceFilter {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Styles pour le tableau */
+#userTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#userTable th, #userTable td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+#userTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+#userTable th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+
 /* Structure principale de liste des profils*/
 /* Container principal */
 .main {

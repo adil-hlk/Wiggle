@@ -13,10 +13,10 @@
         <!-- Barre de recherche et filtres -->
         <input type="text" id="searchInput" placeholder="Rechercher un nom..." />
         <select id="serviceFilter" multiple>
-            <option value="Service A">Service A</option>
-            <option value="Service B">Service B</option>
-            <option value="Service C">Service C</option>
-            <option value="Service D">Service D</option>
+            <option value="Promenade">Promenade</option>
+            <option value="Hébergement">Hébergement</option>
+            <option value="Garderie">Garderie</option>
+            <option value="Garderie de nuit">Garderie de nuit</option>
         </select>
         <button onclick="searchUsers()">Rechercher</button>
 
