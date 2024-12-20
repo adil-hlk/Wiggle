@@ -29,25 +29,29 @@ get_header();
                 </div>
                 <div>
                     <div class="row align-items-center pt-3">
-                        <h3 class="text-uppercase fw-bold text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?> peut prendre en charge</h3>
-                    </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6">
-                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tetechien.svg" alt="chien" width="40%"/>
-                                </div>
-                                <div class="col-md-6">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tetechat.svg" alt="chat" width="40%"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <h4 class="text-uppercase fw-bold text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?>
+                        <?php
+// Vérifie si l'utilisateur est connecté
+if (is_user_logged_in()) {
+    // Récupère les informations de l'utilisateur connecté
+    $current_user = wp_get_current_user();
+
+    // Récupère les rôles de l'utilisateur (un utilisateur peut avoir plusieurs rôles)
+    $roles = $current_user->roles;
+
+    // Vérifie le rôle et affiche un message en fonction
+    if (in_array('administrator', $roles)) {
+        echo "est à la recherche d'un sitter.";
+    } elseif (in_array('editor', $roles)) {
+        echo "propose ses services en tant que sitter.";
+    }
+}
+?>
+</h4>
                 </div>
             </div>
         </div>
 </section>
-
-
 
 <section id="services" class="services p-5">
     <div class="container">
