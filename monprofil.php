@@ -8,18 +8,17 @@ get_header();
 <section id="profil" class="propos">
     <div class="row align-item-center">
         <div class="col-md-6">
+            <div class="container pb-2">
+                <a href="<?php echo home_url('modifier'); ?>"><img class ="illu-img-petit"src="<?php echo get_template_directory_uri(); ?>/assets/images/crayon.svg" alt="modifier"/>
+                </a>
+            </div>
             <div class="container">
-                <div class ="text-uppercase fw-bold pt-3"><?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?></div> <br>
                 <?php if ($profile_picture) {
                    echo '<img src="' . esc_url($profile_picture) . '" alt="Photo de profil de ' . esc_attr($current_user->display_name) . '" class="photo-profil">';
-                    } else {
-                   echo '<img src="' . esc_url(get_template_directory_uri() . '/images/default-avatar.png') . '" alt="Photo de profil par défaut" class="photo-profil">';
-                    } 
+                    }
                 ?>
             </div>
-            <div>
-                <a href="<?php echo home_url('modifier'); ?>">modifier mon profil</a>
-            </div>
+            <div class ="text-uppercase fw-bold pt-3"><?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?></div>
         </div>
         <div class="col-md-6 align-item-right pt-3">
             <div class="container">
@@ -27,10 +26,8 @@ get_header();
                     <h3 class="text-uppercase fw-bold text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h3>
                     <p class="text-start"><?php echo $currentuser -> description; ?></p>
                 </div>
-                <div>
-                    <div class="row align-items-center pt-3">
-                        <h4 class="text-uppercase fw-bold text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?>
-                        <?php
+                <div class="align-items-center pt-3">
+                    <h4 class="text-uppercase fw-bold text-start"><?php
 // Vérifie si l'utilisateur est connecté
 if (is_user_logged_in()) {
     // Récupère les informations de l'utilisateur connecté
@@ -40,14 +37,16 @@ if (is_user_logged_in()) {
     $roles = $current_user->roles;
 
     // Vérifie le rôle et affiche un message en fonction
-    if (in_array('administrator', $roles)) {
+    if (in_array('chercheur', $roles)) {
         echo "est à la recherche d'un sitter.";
-    } elseif (in_array('editor', $roles)) {
-        echo "propose ses services en tant que sitter.";
-    }
-}
-?>
-</h4>
+    } elseif (in_array('sitter', $roles)) {
+        echo "propose ses services en tant que sitter.";  } } ?>
+                    </h4>
+                </div>
+                <div>
+                <form id="notification-form">
+                  <button class="btn btn-primary"type="submit">Devenir Sitter</button>
+                </form>
                 </div>
             </div>
         </div>
