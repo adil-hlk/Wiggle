@@ -100,8 +100,8 @@ function get_sitters() {
 }
 
 function save_sitter_custom_fields($user_id) {
-  if (isset($_POST['service'])) {
-      update_user_meta($user_id, 'service', sanitize_text_field($_POST['service']));
+  if (isset($_POST['services'])) {
+      update_user_meta($user_id, 'services', sanitize_text_field($_POST['services']));
   }
   if (isset($_POST['region'])) {
       update_user_meta($user_id, 'region', sanitize_text_field($_POST['region']));
