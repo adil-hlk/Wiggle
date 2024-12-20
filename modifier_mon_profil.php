@@ -41,6 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             update_user_meta($user_id, 'profile_picture', $movefile['url']);
         }
     }
+    // Traitement de la région
+    if (isset($_POST['region'])) {
+        $region = sanitize_text_field($_POST['region']); // Nettoyer l'entrée
+        update_user_meta($user_id, 'region', $region);
+    }
 
     wp_redirect(home_url('/mon-profil/'));
     exit;
@@ -67,11 +72,15 @@ get_header();
                     <input type="submit" name="submit_profile_picture" class="btn btn-primary" value="Modifier ma photo">
                 </div>
                 <div class="mb-3 p-1">
+                    <label for="region" class="form-label">Ville</label>
+                    <input type="text" id="region" name="region" class="form-control" value="<?php echo esc_attr(get_user_meta($current_user->ID, 'region', true)); ?>">
+                </div>
+                <div class="mb-3 p-1">
                     <label for="biography" class="form-label">Biographie</label>
                     <textarea id="biography" name="biography" class="form-control" rows="5"><?php echo esc_textarea($current_user->description); ?></textarea>
                 </div>
                 <div class="mb-3">
-                    <input type="submit" name="submit_biography" class="btn btn-primary" value="Modifier ma bio">
+                    <input type="submit" name="submit_biography" class="btn btn-primary" value="Modifier mes informations">
                 </div>
             </form>
         </div>
