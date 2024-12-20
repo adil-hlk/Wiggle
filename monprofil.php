@@ -46,39 +46,73 @@ get_header();
                             }
                         ?>
                 </div>
-                <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat" width="20%"/>
-                        <div>
-                            <h4>Hébergement</h4>
-                            <p>Votre animal de compagnie logera au domicile du pet-sitter.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-pelotte.svg" alt="chat sur une pelotte de laine" width="20%"/>
-                        <div>
-                            <h4>Garderie</h4>
-                            <p>Garderie de jour pour votre animal de compagnie.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo" width="20%"/>
-                        <div>
-                            <h4>Promenade</h4>
-                            <p>Le sitter viendra à votre domicile et promènera votre animal de compagnie.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chat couché" width="20%"/>
-                        <div>
-                            <h4>Gardiennage de nuit</h4>
-                            <p>Le sitter logera à votre domicile pendant votre absence.</p>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
+
+                //Service en checkbox
+                <?php
+if (is_user_logged_in()) :
+    $user_id = get_current_user_id();
+
+    // Sauvegarder les services sélectionnés
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_services'])) {
+        $services = isset($_POST['services']) ? array_map('sanitize_text_field', $_POST['services']) : [];
+        update_user_meta($user_id, 'user_services', $services);
+        echo '<p>Vos services ont été mis à jour avec succès.</p>';
+    }
+
+    // Récupérer les services actuels
+    $current_services = get_user_meta($user_id, 'user_services', true);
+    if (!is_array($current_services)) {
+        $current_services = [];
+    }
+    ?>
+
+    <form method="POST">
+        <label for="services">Services proposés :</label><br>
+        <div>
+            <input type="checkbox" id="hebergement" name="services[]" value="Hébergement" 
+                <?php echo in_array('Hébergement', $current_services) ? 'checked' : ''; ?>>
+            <label for="hebergement">Hébergement</label>
+        </div>
+        <div>
+            <input type="checkbox" id="garderie" name="services[]" value="Garderie"
+                <?php echo in_array('Garderie', $current_services) ? 'checked' : ''; ?>>
+            <label for="garderie">Garderie</label>
+        </div>
+        <div>
+            <input type="checkbox" id="promenade" name="services[]" value="Promenade"
+                <?php echo in_array('Promenade', $current_services) ? 'checked' : ''; ?>>
+            <label for="promenade">Promenade</label>
+        </div>
+        <div>
+            <input type="checkbox" id="gardiennage" name="services[]" value="Gardiennage de nuit"
+                <?php echo in_array('Gardiennage de nuit', $current_services) ? 'checked' : ''; ?>>
+            <label for="gardiennage">Gardiennage de nuit</label>
+        </div>
+        <button type="submit" name="update_services">Mettre à jour les services</button>
+    </form>
+
+<?php else : ?>
+    <p>Veuillez vous connecter pour modifier vos services.</p>
+<?php endif; ?>
+
+//mise a jour dans le profil utilisateur
+<?php
+$current_services = get_user_meta($currentuser->ID, 'user_services', true);
+
+if (!empty($current_services)) {
+    echo '<h4>Services proposés :</h4>';
+    echo '<ul>';
+    foreach ($current_services as $service) {
+        echo '<li>' . esc_html($service) . '</li>';
+    }
+    echo '</ul>';
+} else {
+    echo '<p>Aucun service proposé pour le moment.</p>';
+}
+?>
+
+
+
             <div class="col-md-1">
                 <div class="container pb-2">
                     <a href="<?php echo home_url('modifier'); ?>"><img class ="illu-img-petit"src="<?php echo get_template_directory_uri(); ?>/assets/images/crayon.svg" alt="modifier"/></a>
@@ -119,4 +153,10 @@ get_header();
     <h2 class="text-uppercase fw-bold text-start pt-2">disponibilité</h2>
 </section>
 
-<?php get_footer(); ?>
+<?php 
+if (in_array('sitter', $current_user->roles)) {
+  // Affichez le formulaire et les services
+} else {
+  echo '<p>Vous devez être un sitter pour proposer des services.</p>';
+}
+get_footer(); ?>
