@@ -158,10 +158,6 @@ add_action( 'init', 'ajouter_rols_personnalises' );
 
 
 // CUSTOM POSTS TYPES
-
-
-
-
 function create_post_type()
 {
   register_post_type('faqs', [
@@ -195,7 +191,4 @@ function menuheader_link_class($attributes)
   return $attributes;
 }
 add_filter('nav_menu_link_attributes', 'menuheader_link_class');
-
-
-// Formulaire de connexion
 

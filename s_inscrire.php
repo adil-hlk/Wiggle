@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = sanitize_text_field($_POST['username']);
     $email = sanitize_email($_POST['email']);
-    $firstname = sanitize_text_field ($_POST['firstname']);
+    $firstname = sanitize_text_field ($_POST['first_name']);
     $lastname = sanitize_text_field ($_POST['lastname']);
     $password = sanitize_text_field($_POST['password']);
 
@@ -12,10 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Crée un nouvel utilisateur
         $user_id = wp_create_user($username, $password, $email);
         if (!is_wp_error($user_id)) {
-            wp_redirect(home_url('/se-connecter/'));
-            exit;
             update_user_meta($user_id,'first_name', $firstname);
             update_user_meta($user_id, 'last_name', $lastname);
+            wp_redirect(home_url('/se-connecter/'));
+            exit;
         } else {
             echo 'Erreur : ' . $user_id->get_error_message();
         }
@@ -43,8 +43,8 @@ get_header();
                     <input type="text" class="form-control" name="username" id="username" required>
                 </div>
                 <div class="mb-3">
-                    <label for="firstname" class="form-label fw-bold text-start"> Prénom</label>
-                    <input type="text" class="form-control" name="firstname" id="firstname" required>
+                    <label for="first_name" class="form-label fw-bold text-start"> Prénom</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" required>
                 </div>
                 <div class="mb-3">
                     <label for="lastname" class="form-label fw-bold text-start"> Nom</label>

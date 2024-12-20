@@ -24,6 +24,7 @@ get_header();
             <div class="container">
                 <div>
                     <h3 class="text-uppercase fw-bold text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h3>
+                    <p class="text-start fw-bold">Vit à <?php echo $currentuser -> region;?></p>
                     <p class="text-start"><?php echo $currentuser -> description; ?></p>
                 </div>
                 <div class="align-items-center pt-3">
@@ -44,9 +45,11 @@ if (is_user_logged_in()) {
                     </h4>
                 </div>
                 <div>
-                <form id="notification-form">
+                    <form id="notification-form">
                   <button class="btn btn-primary"type="submit">Devenir Sitter</button>
                 </form>
+ 
+                
                 </div>
             </div>
         </div>
