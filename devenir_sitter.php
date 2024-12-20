@@ -17,12 +17,12 @@ get_header();
         <div class="col-md-4">
             <img class ="etape" src="<?php echo get_template_directory_uri(); ?>/assets/images/chiffre1.svg" alt="Étape 1"/>
             <h3>Créer votre profil</h3>
-            <p>Nous vous guidons dans la création de votre profil en mettant en valeur les informations importantes pour les propriétaires d’animaux. Et vérifier votre compte</p>
+            <p>Nous vous guidons dans la création de votre profil en mettant en valeur les informations importantes pour les propriétaires d’animaux.</p>
         </div>
         <div class="col-md-4">
             <img class ="etape" src="<?php echo get_template_directory_uri(); ?>/assets/images/chiffre2.svg" alt="Étape 2"/>
-            <h3>Faites votre agenda</h3>
-            <p>Une fois vérifié, précisez les animaux dont vous souhaitez vous occuper aux dates qui vous conviennent. Vous gérez votre emploi du temps comme vous le souhaitez.</p>
+            <h3>Faites valider votre compte</h3>
+            <p>Sur votre page profil, vous pouvez faire une demande pour valider votre profil et devenir sitter. Délais de 24h.</p>
         </div>
         <div class="col-md-4">
             <img class ="etape" src="<?php echo get_template_directory_uri(); ?>/assets/images/chiffre3.svg" alt="Étape 3"/>

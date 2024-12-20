@@ -128,7 +128,33 @@ function get_users_by_role($role) {
 // Récupérer les sitters
 $sitters = get_users_by_role('sitter');
 
+// les roles
 
+function ajouter_rols_personnalises() {
+  // Ajouter un rôle personnalisé : par exemple, "vendeur"
+  add_role(
+      'sitter', // Nom du rôle
+      'Sitter', // Libellé du rôle
+      array( // Capabilités (données associées au rôle)
+          'read' => true, // Lire (obligatoire pour tout rôle)
+          'edit_posts' => true, // Éditer les publications
+          'publish_posts' => true, // Publier les publications
+          'manage_woocommerce' => true, // Gérer WooCommerce (exemple spécifique à WooCommerce)
+      )
+  );
+
+  // Optionnel : Ajouter un autre rôle
+  add_role(
+      'chercheur', // Nom du rôle
+      'Chercheur', // Libellé du rôle
+      array(
+          'read' => true,
+          'edit_posts' => true,
+          'manage_options' => true, // Gestion des options d'administration
+      )
+  );
+}
+add_action( 'init', 'ajouter_rols_personnalises' );
 
 
 // CUSTOM POSTS TYPES
