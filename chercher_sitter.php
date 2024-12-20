@@ -55,7 +55,9 @@ $sitters = get_users_by_role('sitter');
                      data-service="<?php echo esc_attr($service); ?>" 
                      data-region="<?php echo esc_attr($region); ?>" 
                      data-date="<?php echo esc_attr($availability_date); ?>">
+                     
                     <div class="card shadow-sm">
+                      
                         <div class="card-body">
                             <h5 class="card-title"><?php echo esc_html($sitter->user_login); ?></h5>
                             <p class="card-text">Email : <?php echo esc_html($sitter->user_email); ?></p>
@@ -70,7 +72,7 @@ $sitters = get_users_by_role('sitter');
             <p>Aucun sitter trouvé.</p>
         <?php endif; ?>
     </div>
-    </section>
+</section>
     </br>
 
     <script>

@@ -445,15 +445,15 @@ body {
 .container-cards {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Pour aligner les cartes sur plusieurs lignes si nécessaire */
-    gap: 20px; /* Espacement entre les cartes */
+    flex-wrap: wrap; 
+    gap: 20px;
 }
 
 /* Cartes */
 .card {
     width: 200px;
     height: 260px;
-    background: #ffe76f5e; /* Jaune avec opacité */
+    background: #e99f01; 
     border-radius: 10px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -514,6 +514,7 @@ body {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Barre de recherche */
 #searchInput {
