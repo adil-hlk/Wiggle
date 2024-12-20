@@ -11,7 +11,7 @@ get_header();
             <div class="container">
                 <div class ="text-uppercase fw-bold pt-3"><?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?></div> <br>
                 <?php if ($profile_picture) {
-                   echo '<img src="' . esc_url($profile_picture) . '" alt="Photo de profil de ' . esc_attr($current_user->display_name) . '" class="illu-img-moyen">';
+                   echo '<img src="' . esc_url($profile_picture) . '" alt="Photo de profil de ' . esc_attr($current_user->display_name) . '" class="photo-profil">';
                     } else {
                    echo '<img src="' . esc_url(get_template_directory_uri() . '/images/default-avatar.png') . '" alt="Photo de profil par défaut" class="photo-profil">';
                     } 
