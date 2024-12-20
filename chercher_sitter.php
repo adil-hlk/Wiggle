@@ -34,7 +34,9 @@ $sitters = get_users_by_role('sitter');
                 <input type="date" class="form-control" id="date">
             </div>
 
-            <button type="button" class="btn btn-primary mt-3" id="filter-button">Rechercher</button>
+            <br>
+            <button type="button" class="btn-rechercher md-2" id="filter-button">Rechercher</button>
+            </br>
         </form>
     </section>
 
@@ -68,7 +70,7 @@ $sitters = get_users_by_role('sitter');
         </table>
     </section>
 
-    
+
     <script>
       document.getElementById('filter-button').addEventListener('click', function () {
     var serviceFilter = document.getElementById('service').value.toLowerCase();
