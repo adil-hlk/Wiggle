@@ -5,87 +5,84 @@ $profile_picture = get_user_meta($current_user->ID,'profile_picture', true);
 get_header(); 
 ?>
 
-<section id="profil" class="propos">
-    <div class="row align-item-center">
-        <div class="col-md-6">
-            <div class="container pb-2">
-                <a href="<?php echo home_url('modifier'); ?>"><img class ="illu-img-petit"src="<?php echo get_template_directory_uri(); ?>/assets/images/crayon.svg" alt="modifier"/>
-                </a>
-            </div>
-            <div class="container">
-                <?php if ($profile_picture) {
+<section id="profil" class="services p-5">
+    <div class="container">
+        <div class="row align-item-center">
+            <div class="col-md-4 align-item-center">
+                <div class="container"><?php if ($profile_picture) {
                    echo '<img src="' . esc_url($profile_picture) . '" alt="Photo de profil de ' . esc_attr($current_user->display_name) . '" class="photo-profil">';
                     }
                 ?>
+                </div>
+                <div class ="text-uppercase fw-bold pt-3">
+                    <?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?>
+                </div>
             </div>
-            <div class ="text-uppercase fw-bold pt-3"><?php echo $currentuser -> first_name; ?> <?php echo $currentuser -> last_name; ?></div>
-        </div>
-        <div class="col-md-6 align-item-right pt-3">
-            <div class="container">
-                <div>
+            <div class="col-md-7 align-item-center">
+                <div class="container">
                     <h3 class="text-uppercase fw-bold text-start">À propos de <?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?></h3>
                     <p class="text-start fw-bold">Vit à <?php echo $currentuser -> region;?></p>
                     <p class="text-start"><?php echo $currentuser -> description; ?></p>
                 </div>
-                <div class="align-items-center pt-3">
+                <div class="container">
                     <h4 class="text-uppercase fw-bold text-start">
-                    <?php
-// Vérifie si l'utilisateur est connecté
-if (is_user_logged_in()) {
-    // Récupère les informations de l'utilisateur connecté
-    $current_user = wp_get_current_user();
-
-    // Récupère les rôles de l'utilisateur (un utilisateur peut avoir plusieurs rôles)
-    $roles = $current_user->roles;
-
-    // Vérifie le rôle et affiche un message en fonction
-    if (in_array('chercheur', $roles)) {
-        // Si l'utilisateur est un chercheur, le bouton est affiché
-        echo "est à la recherche d'un sitter";
-        echo '<form id="notification-form">';
-        echo '<button class="btn btn-primary" type="submit">Devenir Sitter</button>';
-        echo '</form>';
-    } elseif (in_array('sitter', $roles)) {
-        echo "propose ses services en tant que sitter.";
-    }
-}
-?>                
+                        <?php
+                            // Vérifie si l'utilisateur est connecté
+                            if (is_user_logged_in()) {
+                            // Récupère les informations de l'utilisateur connecté
+                            $current_user = wp_get_current_user();
+                            // Récupère les rôles de l'utilisateur (un utilisateur peut avoir plusieurs rôles)
+                            $roles = $current_user->roles;
+                            // Vérifie le rôle et affiche un message en fonction
+                            if (in_array('chercheur', $roles)) {
+                            // Si l'utilisateur est un chercheur, le bouton est affiché
+                            echo "est à la recherche d'un sitter";
+                            echo '<form id="notification-form">';
+                            echo '<button class="btn btn-primary" type="submit">Devenir Sitter</button>';
+                            echo '</form>';
+                            } elseif (in_array('sitter', $roles)) {
+                            echo "propose ses services en tant que sitter.";
+                            }
+                            }
+                        ?>
+                </div>
+                <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
+                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat" width="20%"/>
+                        <div>
+                            <h4>Hébergement</h4>
+                            <p>Votre animal de compagnie logera au domicile du pet-sitter.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
+                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-pelotte.svg" alt="chat sur une pelotte de laine" width="20%"/>
+                        <div>
+                            <h4>Garderie</h4>
+                            <p>Garderie de jour pour votre animal de compagnie.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
+                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo" width="20%"/>
+                        <div>
+                            <h4>Promenade</h4>
+                            <p>Le sitter viendra à votre domicile et promènera votre animal de compagnie.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
+                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chat couché" width="20%"/>
+                        <div>
+                            <h4>Gardiennage de nuit</h4>
+                            <p>Le sitter logera à votre domicile pendant votre absence.</p>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
-        </div>
-</section>
-
-<section id="services" class="services p-5">
-    <div class="container">
-        <h2 class="text-uppercase fw-bold col-9 col-md-11 order-1 order-md-1 text-start"><?php echo $currentuser -> first_name;?> <?php echo $currentuser -> last_name; ?> propose</h2>
-    </div>
-    <div class="row">
-        <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat" width="20%"/>
-        <div>
-                <h3>Hébergement</h3>
-                <p>Votre animal de compagnie logera au domicile du pet-sitter.</p>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-pelotte.svg" alt="chat sur une pelotte de laine" width="20%"/>
-        <div>
-                <h3>Garderie</h3>
-                <p>Garderie de jour pour votre animal de compagnie.</p>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo" width="20%"/>
-        <div>
-                <h3>Promenade</h3>
-                <p>Le sitter viendra à votre domicile et promènera votre animal de compagnie.</p>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chat couché" width="20%"/>
-        <div>
-                <h3>Gardiennage de nuit</h3>
-                <p>Le sitter logera à votre domicile pendant votre absence.</p>
+            <div class="col-md-1">
+                <div class="container pb-2">
+                    <a href="<?php echo home_url('modifier'); ?>"><img class ="illu-img-petit"src="<?php echo get_template_directory_uri(); ?>/assets/images/crayon.svg" alt="modifier"/></a>
+                </div>
             </div>
         </div>
     </div>
