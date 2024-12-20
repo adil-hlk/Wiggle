@@ -99,33 +99,35 @@ function get_sitters() {
   return $sitters;
 }
 
-// Exemple d'utilisation
-$sitters = get_sitters();
-foreach ($sitters as $sitter) {
-  echo "Nom : {$sitter->user_login}, Email : {$sitter->user_email}<br>";
+function save_sitter_custom_fields($user_id) {
+  if (isset($_POST['service'])) {
+      update_user_meta($user_id, 'service', sanitize_text_field($_POST['service']));
+  }
+  if (isset($_POST['region'])) {
+      update_user_meta($user_id, 'region', sanitize_text_field($_POST['region']));
+  }
+  if (isset($_POST['availability_date'])) {
+      update_user_meta($user_id, 'availability_date', sanitize_text_field($_POST['availability_date']));
+  }
+}
+add_action('personal_options_update', 'save_sitter_custom_fields');
+add_action('edit_user_profile_update', 'save_sitter_custom_fields');
+
+
+//filtre pour trouver uniquement sitter
+function get_users_by_role($role) {
+  $args = [
+      'role'    => $role, // Récupérer uniquement les utilisateurs du rôle spécifié
+      'orderby' => 'user_login',
+      'order'   => 'ASC',
+  ];
+
+  return get_users($args);
 }
 
-//ajout des rôles
-function add_custom_user_roles() {
-  // Ajouter le rôle "Chercheur"
-  add_role(
-      'chercheur',
-      'Chercheur',
-      [
-          'read' => true, // L'utilisateur peut lire le contenu.
-      ]
-  );
+// Récupérer les sitters
+$sitters = get_users_by_role('sitter');
 
-  // Ajouter le rôle "Sitter"
-  add_role(
-      'sitter',
-      'Sitter',
-      [
-          'read' => true, // L'utilisateur peut lire le contenu.
-      ]
-  );
-}
-add_action('init', 'add_custom_user_roles');
 
 
 
