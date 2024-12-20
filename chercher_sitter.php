@@ -49,21 +49,30 @@ $sitters = get_users_by_role('sitter');
                 <?php
                 $region = get_user_meta($sitter->ID, 'region', true);
                 $service = get_user_meta($sitter->ID, 'service', true);
-                $availability_date = get_user_meta($sitter->ID, 'availability_date', true);
+                
+                // Récupération des dates ACF
+                $start_date = get_field('date_de_debut', 'user_' . $sitter->ID);
+                $end_date = get_field('date_de_fin', 'user_' . $sitter->ID);
                 ?>
                 <div class="col sitter-card" 
                      data-service="<?php echo esc_attr($service); ?>" 
-                     data-region="<?php echo esc_attr($region); ?>" 
-                     data-date="<?php echo esc_attr($availability_date); ?>">
+                     data-region="<?php echo esc_attr($region); ?>">
                      
                     <div class="card shadow-sm">
-                      
                         <div class="card-body">
                             <h5 class="card-title"><?php echo esc_html($sitter->user_login); ?></h5>
                             <p class="card-text">Email : <?php echo esc_html($sitter->user_email); ?></p>
                             <p class="card-text">Service : <?php echo esc_html($service ?: 'Non spécifié'); ?></p>
                             <p class="card-text">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
-                            <p class="card-text">Disponibilité : <?php echo esc_html($availability_date ?: 'Non spécifiée'); ?></p>
+                            
+                            <!-- Affichage de la période de disponibilité -->
+                            <?php if ($start_date && $end_date) : ?>
+                                <p class="card-text">
+                                    Disponibilité : <?php echo esc_html($start_date); ?> au <?php echo esc_html($end_date); ?>
+                                </p>
+                            <?php else : ?>
+                                <p class="card-text">Disponibilité : Non spécifiée</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -73,6 +82,7 @@ $sitters = get_users_by_role('sitter');
         <?php endif; ?>
     </div>
 </section>
+
     </br>
 
     <script>
