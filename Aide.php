@@ -15,15 +15,15 @@ get_header();
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
         <div class="accordion-body text-start">
-            <p>Comment trouver un pet-sitter près de chez moi ?
+            <p><strong>Comment trouver un pet-sitter près de chez moi ?</strong>
             <br>Utilisez le filtre par ville ou code postal pour voir les pet-sitters disponibles dans votre région.</p>
-            <p>Les pet-sitters sont-ils vérifiés ?
+            <p><strong>Les pet-sitters sont-ils vérifiés ?</strong>
             <br>Oui, chaque pet-sitter est soumis à une vérification et évalué par notre communauté.</p>
-            <p>Puis-je voir les avis des autres propriétaires ?
+            <p><strong>Puis-je voir les avis des autres propriétaires ?</strong>
             <br>Oui, chaque profil affiche les évaluations laissées par les propriétaires précédents.</p>
-            <p>Puis-je filtrer par type d’animaux acceptés ?
+            <p><strong>Puis-je filtrer par type d’animaux acceptés ?</strong>
             <br>Oui, utilisez les options de recherche avancée pour choisir en fonction de vos besoins.</p>
-            <p>Quels services les pet-sitters peuvent-ils offrir ?
+            <p><strong>Quels services les pet-sitters peuvent-ils offrir ?</strong>
             <br>Les services varient : promenades, visites à domicile, garde à domicile ou hébergement chez le pet-sitter.</p>
         </div>
       </div>
@@ -36,15 +36,15 @@ get_header();
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body text-start">
-            <p>Que faire avant de confier mon animal ?
+            <p><strong>Que faire avant de confier mon animal ?</strong>
             <br>Discutez avec le pet-sitter pour expliquer les besoins spécifiques de votre animal (alimentation, habitudes, etc.).</p>
-            <p>Mon animal a des besoins particuliers, que faire ?
+            <p><strong>Mon animal a des besoins particuliers, que faire ?</strong>
             <br>Indiquez ces détails dans votre demande et confirmez avec le pet-sitter qu’il est à l’aise avec ces exigences.</p>
-            <p>Puis-je rencontrer le pet-sitter avant la garde ?
+            <p><strong>Puis-je rencontrer le pet-sitter avant la garde ?</strong>
             <br>Oui, une rencontre préalable est encouragée pour établir une relation de confiance.</p>
-            <p>Comment rester en contact avec le pet-sitter pendant la garde ?
+            <p><strong>Comment rester en contact avec le pet-sitter pendant la garde ?</strong>
             <br>Vous pouvez utiliser le chat intégré pour recevoir des nouvelles et des photos de votre animal.</p>
-            <p>Que se passe-t-il si l’animal tombe malade pendant la garde ?
+            <p><strong>Que se passe-t-il si l’animal tombe malade pendant la garde ?</strong>
             <br>Le pet-sitter est formé pour réagir rapidement et vous contacter immédiatement en cas de problème.</p>
         </div>
       </div>
@@ -57,13 +57,13 @@ get_header();
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body text-start">
-            <p>Comment réserver un pet-sitter ?
+            <p><strong>Comment réserver un pet-sitter ?</strong>
             <br>Envoyez une demande via le profil du pet-sitter et attendez sa confirmation.</p>
-            <p>Combien de temps faut-il pour qu’un pet-sitter réponde ?
+            <p><strong>Combien de temps faut-il pour qu’un pet-sitter réponde ?</strong>
             <br>La plupart répondent dans les 24 heures.</p>
-            <p>Puis-je annuler une réservation ?
+            <p><strong>Puis-je annuler une réservation ?</strong>
             <br>Oui, selon les conditions d’annulation indiquées sur le profil du pet-sitter.</p>
-            <p>Que faire si le pet-sitter annule ma réservation ?
+            <p><strong>Que faire si le pet-sitter annule ma réservation ?</strong>
             <br>Vous serez immédiatement informé et aidé à trouver un autre pet-sitter.</p>
         </div>
       </div>
@@ -76,15 +76,15 @@ get_header();
         </h2>
         <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
           <div class="accordion-body text-start">
-            <p>Mon animal est-il couvert en cas d’accident ?
+            <p><strong>Mon animal est-il couvert en cas d’accident ?</strong>
             <br>Oui, notre service inclut une assurance pour les incidents pendant la garde.</p>
-            <p>Que faire en cas d’urgence médicale pour mon animal ?
+            <p><strong>Que faire en cas d’urgence médicale pour mon animal ?</strong>
             <br>Le pet-sitter vous contactera et se rendra chez le vétérinaire si nécessaire.</p>
-            <p>Les informations que je partage sont-elles sécurisées ?
+            <p><strong>Les informations que je partage sont-elles sécurisées ?</strong>
             <br>Oui, nous respectons les normes RGPD pour protéger vos données personnelles.</p>
-            <p>Et si je ne suis pas satisfait du service ?
+            <p><strong>Et si je ne suis pas satisfait du service ?</strong>
             <br>Contactez notre support client pour discuter des solutions possibles.</p>
-            <p>Comment garantir la sécurité de mon animal ?
+            <p><strong>Comment garantir la sécurité de mon animal ?</strong>
             <br>En choisissant un pet-sitter avec de bonnes évaluations et en expliquant clairement vos attentes.</p>
           </div>
         </div>
