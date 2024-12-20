@@ -105,6 +105,28 @@ foreach ($sitters as $sitter) {
   echo "Nom : {$sitter->user_login}, Email : {$sitter->user_email}<br>";
 }
 
+//ajout des rôles
+function add_custom_user_roles() {
+  // Ajouter le rôle "Chercheur"
+  add_role(
+      'chercheur',
+      'Chercheur',
+      [
+          'read' => true, // L'utilisateur peut lire le contenu.
+      ]
+  );
+
+  // Ajouter le rôle "Sitter"
+  add_role(
+      'sitter',
+      'Sitter',
+      [
+          'read' => true, // L'utilisateur peut lire le contenu.
+      ]
+  );
+}
+add_action('init', 'add_custom_user_roles');
+
 
 
 // CUSTOM POSTS TYPES
