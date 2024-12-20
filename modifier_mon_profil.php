@@ -1,9 +1,9 @@
+
 <?php
 $current_user = wp_get_current_user();
+$user_id = get_current_user_id();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user_id = get_current_user_id();
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Traitement de la biographie
     if (isset($_POST['submit_biography'])) {
         $biography = sanitize_textarea_field($_POST['biography']); // Nettoyer l'entrée
@@ -12,12 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'description' => $biography
         ));
     }
-    // Traitement des services 
-    if (isset($_POST['services'])) {
-        $selected_service = sanitize_text_field($_POST['services']); // Nettoyer l'entrée
-        update_user_meta($user_id, 'services', $selected_service);
-    }
-    
+
     // Traitement de l'image de profil
     if (isset($_POST['submit_profile_picture']) && !empty($_FILES['profile_picture']['name'])) {
         require_once(ABSPATH . 'wp-admin/includes/file.php');
@@ -44,18 +39,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             update_user_meta($user_id, 'profile_picture', $movefile['url']);
         }
     }
+
     // Traitement de la région
     if (isset($_POST['region'])) {
         $region = sanitize_text_field($_POST['region']); // Nettoyer l'entrée
         update_user_meta($user_id, 'region', $region);
     }
+
+    // Traitement des services
     if (isset($_POST['services'])) {
-        update_user_meta($user_id, 'services', sanitize_text_field($_POST['services']));  }
+        update_user_meta($user_id, 'services', sanitize_text_field($_POST['services']));
+    }
+
+    // Traitement des dates de disponibilité
+    if (isset($_POST['update_dates'])) {
+        if (!empty($_POST['start_date'])) {
+            update_field('date_de_debut', sanitize_text_field($_POST['start_date']), 'user_' . $user_id);
+        }
+        if (!empty($_POST['end_date'])) {
+            update_field('date_de_fin', sanitize_text_field($_POST['end_date']), 'user_' . $user_id);
+        }
+    }
 
     wp_redirect(home_url('/mon-profil/'));
     exit;
 }
+
+// Récupérer les dates actuelles pour affichage
+$start_date = get_field('date_de_debut', 'user_' . $user_id);
+$end_date = get_field('date_de_fin', 'user_' . $user_id);
 ?>
+
 <?php
 /* Template Name: Modifier */
 
@@ -92,6 +106,13 @@ get_header();
                         <option value="service3" <?php selected(get_user_meta($current_user->ID, 'services', true), 'service3'); ?>>Garderie</option>
                         <option value="service4" <?php selected(get_user_meta($current_user->ID, 'services', true), 'service4'); ?>>Garderie de nuit</option>
                     </select>
+                </div>
+                <div class="mb-3 p-1">
+                    <label for="start_date">Date de début :</label>
+                    <input type="date" id="start_date" name="start_date" value="<?php echo esc_attr($start_date); ?>" required>
+        
+                    <label for="end_date">Date de fin :</label>
+                    <input type="date" id="end_date" name="end_date" value="<?php echo esc_attr($end_date); ?>" required>
                 </div>
                 <div class="mb-3 p-3">
                     <input type="submit" name="submit_biography" class="btn btn-primary" value="Modifier mes informations">
