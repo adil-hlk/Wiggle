@@ -431,99 +431,31 @@ body {
 }
 
 
-/* Structure principale de liste des profils*/
-/* Container principal */
-.main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #fff2c2; /* Couleur de fond */
-}
-
-/* Container des cartes */
-.container-cards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; 
-    gap: 20px;
-}
-
-/* Cartes */
-.card {
-    width: 200px;
-    height: 260px;
-    background: #e99f01; 
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    padding: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Effet hover */
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Images dans les cartes */
-.illu-img-petit {
-    width: 50px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-/* Police des titres */
-.fw-bold {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* Responsive pour écrans plus petits */
-@media (max-width: 768px) {
-    .container-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        width: 90%; /* Prend presque toute la largeur */
-    }
-}
-
 /* Conteneur principal pour les cartes */
 #results-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content: center; /* Centre les cartes */
+    padding: 1rem;
 }
 
 /* Style des cartes */
 .card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 1rem;
-    background-color: #f9f9f9;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Barre de recherche */
-#searchInput {
     width: 100%;
-    font-size: 16px;
-    padding: 10px;
+    max-width: 250px; /* Taille maximale des cartes */
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
 }
+
 
 /* Titres et textes dans les cartes */
 .card-title {
@@ -535,6 +467,20 @@ body {
 .card-text {
     font-size: 14px;
     color: #555;
+    margin: 0.25rem 0;
+}
+
+
+/* Responsive pour tablettes et mobiles */
+@media (max-width: 768px) {
+    .card {
+        max-width: 90%; /* Prend presque toute la largeur */
+    }
+
+    #results-cards {
+        justify-content: center;
+        gap: 1.5rem;
+    }
 }
 
 /*section footer*/
