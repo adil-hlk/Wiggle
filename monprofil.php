@@ -28,7 +28,8 @@ get_header();
                     <p class="text-start"><?php echo $currentuser -> description; ?></p>
                 </div>
                 <div class="align-items-center pt-3">
-                    <h4 class="text-uppercase fw-bold text-start"><?php
+                    <h4 class="text-uppercase fw-bold text-start">
+                    <?php
 // Vérifie si l'utilisateur est connecté
 if (is_user_logged_in()) {
     // Récupère les informations de l'utilisateur connecté
@@ -39,17 +40,16 @@ if (is_user_logged_in()) {
 
     // Vérifie le rôle et affiche un message en fonction
     if (in_array('chercheur', $roles)) {
-        echo "est à la recherche d'un sitter.";
+        // Si l'utilisateur est un chercheur, le bouton est affiché
+        echo "est à la recherche d'un sitter";
+        echo '<form id="notification-form">';
+        echo '<button class="btn btn-primary" type="submit">Devenir Sitter</button>';
+        echo '</form>';
     } elseif (in_array('sitter', $roles)) {
-        echo "propose ses services en tant que sitter.";  } } ?>
-                    </h4>
-                </div>
-                <div>
-                    <form id="notification-form">
-                  <button class="btn btn-primary"type="submit">Devenir Sitter</button>
-                </form>
- 
-                
+        echo "propose ses services en tant que sitter.";
+    }
+}
+?>                
                 </div>
             </div>
         </div>
