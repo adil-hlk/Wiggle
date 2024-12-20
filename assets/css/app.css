@@ -494,7 +494,47 @@ body {
     }
 }
 
+/* Conteneur principal pour les cartes */
+#results-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 
+/* Style des cartes */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Barre de recherche */
+#searchInput {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Titres et textes dans les cartes */
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #555;
+}
 
 /*section footer*/
 

@@ -41,34 +41,65 @@ $sitters = get_users_by_role('sitter');
     </section>
 
     <!-- Table des résultats -->
+    <br>
     <section>
-        <table id="results-table">
-            <thead>
-                <tr class="header">
-                    <th style="width:40%;">Nom</th>
-                    <th style="width:40%;">Email</th>
-                    <th style="width:20%;">Service</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($sitters)) : ?>
-                    <?php foreach ($sitters as $sitter) : ?>
-                        <tr data-service="<?php echo esc_attr(get_user_meta($sitter->ID, 'service', true)); ?>" 
-                            data-region="<?php echo esc_attr(get_user_meta($sitter->ID, 'region', true)); ?>"
-                            data-date="<?php echo esc_attr(get_user_meta($sitter->ID, 'availability_date', true)); ?>">
-                            <td><?php echo esc_html($sitter->user_login); ?></td>
-                            <td><?php echo esc_html($sitter->user_email); ?></td>
-                            <td><?php echo esc_html(get_user_meta($sitter->ID, 'service', true)); ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else : ?>
-                    <tr>
-                        <td colspan="3">Aucun sitter trouvé.</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+    <div id="results-cards" class="row row-cols-4 row-cols-md-3 g-2">
+        <?php if (!empty($sitters)) : ?>
+            <?php foreach ($sitters as $sitter) : ?>
+                <?php
+                $region = get_user_meta($sitter->ID, 'region', true);
+                $service = get_user_meta($sitter->ID, 'service', true);
+                $availability_date = get_user_meta($sitter->ID, 'availability_date', true);
+                ?>
+                <div class="col sitter-card" 
+                     data-service="<?php echo esc_attr($service); ?>" 
+                     data-region="<?php echo esc_attr($region); ?>" 
+                     data-date="<?php echo esc_attr($availability_date); ?>">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo esc_html($sitter->user_login); ?></h5>
+                            <p class="card-text">Email : <?php echo esc_html($sitter->user_email); ?></p>
+                            <p class="card-text">Service : <?php echo esc_html($service ?: 'Non spécifié'); ?></p>
+                            <p class="card-text">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
+                            <p class="card-text">Disponibilité : <?php echo esc_html($availability_date ?: 'Non spécifiée'); ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>Aucun sitter trouvé.</p>
+        <?php endif; ?>
+    </div>
     </section>
+    </br>
+
+    <script>
+       function filterCards() {
+        // Récupérer les valeurs du champ de recherche
+        var input = document.getElementById("searchInput");
+        var filter = input.value.toUpperCase();
+        var cards = document.getElementsByClassName("sitter-card");
+
+        // Parcourir toutes les cartes
+        for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            var title = card.querySelector(".card-title").textContent || "";
+            var service = card.getAttribute("data-service") || "";
+            var region = card.getAttribute("data-region") || "";
+
+            // Vérifier si une des informations correspond au filtre
+            if (
+                title.toUpperCase().indexOf(filter) > -1 ||
+                service.toUpperCase().indexOf(filter) > -1 ||
+                region.toUpperCase().indexOf(filter) > -1
+            ) {
+                card.style.display = ""; // Afficher la carte
+            } else {
+                card.style.display = "none"; // Cacher la carte
+            }
+        }
+    }
+    <script>
 
 
     <script>
