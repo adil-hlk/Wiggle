@@ -1,4 +1,10 @@
 <?php
+/* Template Name: Modifier */
+
+get_header();
+?>
+
+<?php
 $current_user = wp_get_current_user();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -68,11 +74,76 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 ?>
-<?php
-/* Template Name: Modifier */
 
-get_header();
+<?php
+// Assurez-vous que l'utilisateur est connecté
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/connexion/'));
+    exit;
+}
+
+// Récupérer l'utilisateur actuel
+$current_user = wp_get_current_user();
+$user_id = $current_user->ID;
+
+// Traitement du formulaire
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_services'])) {
+    try {
+        // Vérifiez que l'utilisateur est un sitter
+        if (!user_can($user_id, 'sitter')) {
+            throw new Exception('Vous n\'avez pas la permission de modifier les services.');
+        }
+
+        // Nettoyez et sauvegardez les services
+        if (isset($_POST['services']) && is_array($_POST['services'])) {
+            $selected_services = array_map('sanitize_text_field', $_POST['services']);
+            update_user_meta($user_id, 'services', $selected_services);
+        } else {
+            update_user_meta($user_id, 'services', []); // Si rien n'est sélectionné
+        }
+
+        // Redirection après la mise à jour
+        wp_redirect(home_url('/mon-profil/')); // Changez l'URL selon vos besoins
+        exit;
+    } catch (Exception $e) {
+        // Gestion des erreurs
+        $error_message = $e->getMessage();
+    }
+}
+
+// Récupérez les services sélectionnés pour pré-remplir le formulaire
+$available_services = ['Promenade', 'Garderie', 'Garderie de nuit', 'Hébergement'];
+$user_services = get_user_meta($user_id, 'services', true);
+if (!is_array($user_services)) {
+    $user_services = [];
+}
 ?>
+
+<!-- Affichage d'un message d'erreur (si existant) -->
+<?php if (!empty($error_message)): ?>
+    <div class="error-message" style="color: red;">
+        <?php echo esc_html($error_message); ?>
+    </div>
+<?php endif; ?>
+
+<!-- Formulaire HTML -->
+<form method="post">
+    <label for="services" class="form-label fw-bold">Services proposés :</label>
+    <?php foreach ($available_services as $service): ?>
+        <div>
+            <label>
+                <input type="checkbox" name="services[]" value="<?php echo esc_attr($service); ?>"
+                <?php checked(in_array($service, $user_services)); ?>>
+                <?php echo esc_html($service); ?>
+            </label>
+        </div>
+    <?php endforeach; ?>
+    <button type="submit" name="update_services" class="btn btn-primary">Mettre à jour</button>
+</form>
+
+
+
+
 <main>
     <section>
         <div class="container">

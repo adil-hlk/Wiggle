@@ -47,6 +47,7 @@ get_header();
                             }
                             }
                         ?>
+                        
                         </h4>
                 </div>
                 <div class="container">
@@ -122,4 +123,5 @@ get_header();
     <h2 class="text-uppercase fw-bold text-start pt-2">disponibilité</h2>
 </section>
 
+<?php get_footer(); ?>
 <?php get_footer(); ?>
