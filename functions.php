@@ -139,7 +139,6 @@ function ajouter_rols_personnalises() {
           'read' => true, // Lire (obligatoire pour tout rôle)
           'edit_posts' => true, // Éditer les publications
           'publish_posts' => true, // Publier les publications
-          'manage_woocommerce' => true, // Gérer WooCommerce (exemple spécifique à WooCommerce)
       )
   );
 
@@ -155,6 +154,8 @@ function ajouter_rols_personnalises() {
   );
 }
 add_action( 'init', 'ajouter_rols_personnalises' );
+
+
 
 
 // CUSTOM POSTS TYPES

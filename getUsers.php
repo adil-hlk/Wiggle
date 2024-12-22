@@ -1,54 +1,40 @@
 <?php
-// Connexion à la base de données
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "your_database";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 // Récupérer les paramètres de recherche
-$search = $_GET['search'] ?? '';
-$services = $_GET['services'] ?? '';
+$search = isset($_GET['search']) ? sanitize_text_field($_GET['search']) : '';
+$services = isset($_GET['services']) ? sanitize_text_field($_GET['services']) : '';
 
-// Construire la requête SQL
-$sql = "SELECT * FROM users WHERE name LIKE ?";
+// Construire la requête pour rechercher les utilisateurs
+$args = [
+    'meta_query' => [],
+    'search'     => '*' . $search . '*',
+    'search_columns' => ['display_name', 'user_email'],
+];
 
 // Ajouter un filtre pour les services si fourni
 if (!empty($services)) {
-    $serviceList = explode(',', $services);
-    $placeholders = implode(',', array_fill(0, count($serviceList), '?'));
-    $sql .= " AND (";
-    foreach ($serviceList as $index => $service) {
-        if ($index > 0) $sql .= " OR ";
-        $sql .= "FIND_IN_SET(?, services)";
+    $service_list = explode(',', $services);
+
+    $args['meta_query'][] = [
+        'key'     => 'services',
+        'value'   => $service_list,
+        'compare' => 'IN',
+    ];
+}
+
+// Récupérer les utilisateurs correspondants
+$user_query = new WP_User_Query($args);
+$users = [];
+
+if (!empty($user_query->get_results())) {
+    foreach ($user_query->get_results() as $user) {
+        $users[] = [
+            'ID'         => $user->ID,
+            'display_name' => $user->display_name,
+            'services'   => explode(',', get_user_meta($user->ID, 'services', true)),
+        ];
     }
-    $sql .= ")";
 }
-
-$stmt = $conn->prepare($sql);
-
-// Ajouter les paramètres dynamiquement
-$params = ["%$search%"];
-foreach ($serviceList as $service) {
-    $params[] = $service;
-}
-$stmt->bind_param(str_repeat('s', count($params)), ...$params);
-
-$stmt->execute();
-$result = $stmt->get_result();
 
 // Retourner les résultats sous forme de JSON
-$users = [];
-while ($row = $result->fetch_assoc()) {
-    $users[] = $row;
-}
-
 echo json_encode($users);
-
-$conn->close();
-?>
+exit;
