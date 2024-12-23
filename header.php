@@ -27,7 +27,7 @@
             <!-- Liens de navigation -->
             <ul class="nav-links">
                 <li><a href="<?php echo home_url('chercher-un-sitter'); ?>">Chercher un sitter</a></li>
-                <li><a href="<?php echo home_url('devenir-un-sitter'); ?>">Devenir un sitter</a></li>
+                <li><a href="<?php echo home_url('devenir-sitter'); ?>">Devenir un sitter</a></li>
                 <?php if (!is_user_logged_in()):?>
                 <li><a href="<?php echo home_url('se-connecter'); ?>">Se Connecter</a></li>
                 <li><a href="<?php echo home_url('sinscrire'); ?>">S'inscrire</a></li>

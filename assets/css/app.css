@@ -435,53 +435,63 @@ body {
 #results-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center; /* Centre les cartes */
-    padding: 1rem;
+    gap: 20px; /* Espacement entre les cartes */
+    justify-content: center; /* Centre les cartes dans le conteneur */
+    padding: 20px;
 }
 
-/* Style des cartes */
-.card {
-    width: 100%;
-    max-width: 250px; /* Taille maximale des cartes */
+.sitter-card {
+    flex: 1 1 calc(25% - 20px); /* Chaque carte occupe 25% de la largeur */
+    max-width: 300px; /* Limite la largeur */
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-/* Titres et textes dans les cartes */
-.card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+.sitter-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card-text {
-    font-size: 14px;
-    color: #555;
-    margin: 0.25rem 0;
+/* Responsive pour tablettes et mobiles */
+@media (max-width: 1024px) {
+    .sitter-card {
+        flex: 1 1 calc(33.333% - 20px); /* Chaque carte occupe un tiers */
+    }
 }
 
+@media (max-width: 768px) {
+    .sitter-card {
+        flex: 1 1 calc(50% - 20px); /* Chaque carte occupe 50% */
+    }
+}
+
+@media (max-width: 480px) {
+    .sitter-card {
+        flex: 1 1 100%; /* Pleine largeur */
+    }
+}
 
 /* Responsive pour tablettes et mobiles */
 @media (max-width: 768px) {
     .card {
-        max-width: 90%; /* Prend presque toute la largeur */
+        flex: 1 1 calc(100% - 1rem); /* 50% de largeur sur mobiles */
     }
 
-    #results-cards {
-        justify-content: center;
-        gap: 1.5rem;
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 calc(100% - 1rem); /* Pleine largeur sur très petits écrans */
     }
 }
+
 
 /*section footer*/
 

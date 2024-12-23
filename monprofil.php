@@ -85,7 +85,7 @@ get_header();
             </div>
             <div class="col-md-1">
                 <div class="container pb-2">
-                    <a href="<?php echo home_url('modifier'); ?>"><img class ="illu-img-petit"src="<?php echo get_template_directory_uri(); ?>/assets/images/crayon.svg" alt="modifier"/></a>
+                    <a href="<?php echo home_url('modifiez-mon-profil'); ?>"><img class ="illu-img-petit"src="<?php echo get_template_directory_uri(); ?>/assets/images/crayon.svg" alt="crayon pour modifier"/></a>
                 </div>
             </div>
         </div>
