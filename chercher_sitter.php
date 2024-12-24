@@ -46,6 +46,7 @@ $sitters = get_users_by_role('sitter');
         <?php if (!empty($sitters)) : ?>
             <?php foreach ($sitters as $sitter) : ?>
                 <?php
+                $sitter_phone = get_user_meta($sitter->ID, 'numero_de_telephone', true);
                 $region = get_user_meta($sitter->ID, 'region', true);
                 $service = get_user_meta($sitter->ID, 'service', true);
 
@@ -73,7 +74,19 @@ $sitters = get_users_by_role('sitter');
                                 <?php else : ?>
                                     <p class="card-text">Disponibilité : Non spécifiée</p>
                                 <?php endif; ?>
+                                <?php
+$sitter_phone = get_field('numero_de_telephone', 'user_' . $sitter->ID); // Récupère le numéro de téléphone via ACF
+if ($sitter_phone) : ?>
+    <p class="card-text">
+        <a href="https://api.whatsapp.com/send?phone=<?php echo esc_attr($sitter_phone); ?>&text=<?php echo urlencode('Bonjour, je suis intéressé par vos services !'); ?>" 
+           target="_blank" 
+           class="btn btn-success">
+            Contacter sur WhatsApp
+        </a>
+    </p>
                             </div>
+                           
+<?php endif; ?>
                         </div>
                     </a>
                 </div>

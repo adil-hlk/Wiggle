@@ -89,6 +89,11 @@ get_header();
                 </div>
             </div>
         </div>
+        <div><a href="https://api.whatsapp.com/send?phone=<?php echo esc_attr($sitter_phone); ?>&text=<?php echo urlencode('Bonjour, je suis intéressé par vos services !'); ?>" 
+           target="_blank" 
+           class="btn btn-success">
+            Contacter sur WhatsApp
+        </a></div>
     </div>
 </section>
 
@@ -111,6 +116,8 @@ get_header();
           <div class="glass" data-text="Avis de Ahmed : Parfait !">
             <p>Ahmed : "Je recommande, mon chat s'est senti à l'aise dès le départ."</p>
           </div>
+          
+
         </div>
       </div> 
 </section>

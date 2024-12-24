@@ -73,6 +73,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     wp_redirect(home_url('/Wiggle/mon-profil/'));
     exit;
 }
+        // Traitement du numéro de téléphone
+        if (isset($_POST['phone_number'])) {
+            $phone_number = sanitize_text_field($_POST['phone_number']); // Nettoyer l'entrée utilisateur
+            update_user_meta($user_id, 'phone_number', $phone_number);
+       }
+
+
 ?>
 
 <?php
@@ -85,55 +92,69 @@ if (!is_user_logged_in()) {
 // Récupérer l'utilisateur actuel
 $current_user = wp_get_current_user();
 $user_id = $current_user->ID;
-
-// Traitement du formulaire
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_services'])) {
-    try {
-        // Vérifiez que l'utilisateur est un sitter
-        if (!user_can($user_id, 'sitter')) {
-            throw new Exception('Vous n\'avez pas la permission de modifier les services.');
-        }
-
-        // Nettoyez et sauvegardez les services
-        if (isset($_POST['services']) && is_array($_POST['services'])) {
-           // Filtrer les services pour n'inclure que ceux valides
-           $available_services = ['Promenade', 'Garderie', 'Garderie de nuit', 'Hébergement'];
-           $selected_services = array_filter($_POST['services'], function ($service) use ($available_services) {
-               return in_array($service, $available_services, true);
-           });
-
-            // Convertir le tableau en chaîne séparée par des virgules
-            $services_string = implode(',', $selected_services);
-            update_user_meta($user_id, 'services', $selected_services);
-        } else {
-            update_user_meta($user_id, 'services', []);
-        }
-
-        // Redirection après la mise à jour
-        wp_redirect(home_url('/Wiggle/mon-profil/')); // Changez l'URL selon vos besoins
-        exit;
-    } catch (Exception $e) {
-        // Gestion des erreurs
-        $error_message = $e->getMessage();
-    }
-}
-
-// Récupérez les services sélectionnés pour pré-remplir le formulaire
-$available_services = ['Promenade', 'Garderie', 'Garderie de nuit', 'Hébergement'];
-$user_services = get_user_meta($user_id, 'services', true);
-$selected_services = !empty($user_services) ? explode(',', $user_services) : [];
 ?>
 
-<!-- Affichage d'un message d'erreur (si existant) -->
-<?php if (!empty($error_message)): ?>
-    <div class="error-message" style="color: red;">
-        <?php echo esc_html($error_message); ?>
-    </div>
-<?php endif; ?>
+
+<?php // Traitement du formulaire
+if ($_GET) {
+    $region = isset($_GET['region']) ? sanitize_text_field($_GET['region']) : '';
+    $services = isset($_GET['services']) ? sanitize_text_field($_GET['services']) : '';
+
+    // Construire la requête avec les critères
+    $args = array(
+        'role'    => 'sitter', // Filtre pour le rôle "sitter"
+        'meta_query' => array(
+            'relation' => 'AND', // Combine les filtres
+        ),
+    );
+
+    // Ajouter le filtre par région si une région est spécifiée
+    if (!empty($region)) {
+        $args['meta_query'][] = array(
+            'key'     => 'region',
+            'value'   => $region,
+            'compare' => 'LIKE', // Recherche partielle
+        );
+    }
+
+    // Ajouter le filtre par service si un service est spécifié
+    if (!empty($services)) {
+        $args['meta_query'][] = array(
+            'key'     => 'services',
+            'value'   => $services,
+            'compare' => 'LIKE', // Vérifie que le service est dans la liste
+        );
+    }
+
+    // Exécuter la requête
+    $user_query = new WP_User_Query($args);
+
+    // Vérifier si des résultats existent
+    if (!empty($user_query->get_results())) {
+        foreach ($user_query->get_results() as $user) {
+            echo '<p>' . esc_html($user->display_name) . ' - ' . esc_html(get_user_meta($user->ID, 'region', true)) . '</p>';
+        }
+    } else {
+        echo '<p>Aucun sitter trouvé avec ces critères.</p>';
+    }
+    
+}
+?>
 
 
+<?php
+// Récupérer le champ ACF "services" pour l'utilisateur
+$user_id = $user->ID; // Remplace $user par l'objet utilisateur actuel
+$services = get_field('services', 'user_' . $user_id); // Préfixe "user_" pour les utilisateurs
 
-
+// Vérifier si des services existent
+if (!empty($services)) {
+    // Afficher les services (le champ est un tableau)
+    echo '<p>Services disponibles : ' . implode('Promenade,Garderie,Garderie de nuit,Hébergement', $services) . '</p>';
+} else {
+    echo '<p>Services indisponibles.</p>';
+}
+?>
 
 
 <main>
@@ -171,6 +192,19 @@ $selected_services = !empty($user_services) ? explode(',', $user_services) : [];
                     <input type="date" id="end_date" name="end_date" value="<?php echo esc_attr($end_date); ?>" required>
                     <button class="btn-rechercher md-2"type="submit" name="update_dates">Mettre à jour</button>
                 </div>
+                <div class="mb-3 p-1">
+    <label for="numero_de_telephone" class="form-label fw-bold">Numéro de téléphone</label>
+    <input 
+        type="tel" 
+        id="numero_de_telephone" 
+        name="numero_de_telephone" 
+        class="form-control" 
+        value="<?php echo esc_attr(get_user_meta($current_user->ID, 'numero_de_telephone', true)); ?>" 
+        pattern="^\+?[0-9\s\-]+$"
+        placeholder="0485 64 79 50"
+        required>
+</div>
+
                 </div>
                 </form>
             <!-- Formulaire HTML pour service -->
