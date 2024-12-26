@@ -202,22 +202,37 @@ get_header();
                 
 
             <!-- Formulaire HTML pour service -->
-             <div>
-            <form method="post">
-                <br>
-                 <label for="services" class="form-label fw-bold">Services proposés :</label>
-                 <?php foreach ($available_services as $service): ?>
-               <div>
-               <label>
-                <input type="checkbox" name="services[]" value="<?php echo esc_attr($services); ?>"
-                <?php echo in_array($service, $selected_services, true) ? 'checked' : ''; ?>>
+            <?php
+// Récupérer l'utilisateur actuel
+$current_user = wp_get_current_user();
+$user_id = $current_user->ID;
+
+// Récupérer les services actuels (ACF checkbox)
+$available_services = ['Promenade', 'Garderie', 'Garderie de nuit', 'Hébergement'];
+$selected_services = get_field('services', 'user_' . $user_id); // Récupérer les services sélectionnés
+
+// Traitement du formulaire lors de la soumission
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_services'])) {
+    // Vérifier et nettoyer les services envoyés par le formulaire
+    $new_services = isset($_POST['services']) ? array_map('sanitize_text_field', $_POST['services']) : [];
+    update_field('services', $new_services, 'user_' . $user_id);
+}
+?>
+
+<form method="post">
+    <h3>Services proposés :</h3>
+    <?php foreach ($available_services as $service): ?>
+        <div>
+            <label>
+                <input type="checkbox" name="services[]" value="<?php echo esc_attr($service); ?>"
+                    <?php echo (is_array($selected_services) && in_array($service, $selected_services)) ? 'checked' : ''; ?>>
                 <?php echo esc_html($service); ?>
-               </label>
-               </div>
-                  <?php endforeach; ?>
-                  <button type="submit" name="update_services" class="btn-rechercher md-2 m-3">Mettre à jour</button>
-                
-                </form>
+            </label>
+        </div>
+    <?php endforeach; ?>
+    <button type="submit" name="update_services" class="btn-rechercher md-2">Mettre à jour</button>
+</form>
+
             
                 </div>
          <br>

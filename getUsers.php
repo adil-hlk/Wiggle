@@ -35,6 +35,7 @@ if (!empty($user_query->get_results())) {
     }
 }
 
+
 // Retourner les résultats sous forme de JSON
 echo json_encode($users);
 exit;
