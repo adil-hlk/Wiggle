@@ -1,8 +1,4 @@
-<?php
-/* Template Name: Modifier */
 
-get_header();
-?>
 
 <?php
 $current_user = wp_get_current_user();
@@ -155,7 +151,11 @@ if (!empty($services)) {
     echo '<p>Services indisponibles.</p>';
 }
 ?>
+<?php
+/* Template Name: Modifier */
 
+get_header();
+?>
 
 <main>
     <section class="bg-custom1">
@@ -167,12 +167,16 @@ if (!empty($services)) {
                 <div class="mb-3 p-1">
                     <label for="profile_picture" class="form-label fw-bold">Photo de profil</label>
                     <input type="file" id="profile_picture" name="profile_picture" class="form-control">
-                    <?php
-                    $profile_picture = get_user_meta($current_user->ID, 'profile_picture', true);
-                    ?>
+                    <?php $profile_picture = get_user_meta($current_user->ID, 'profile_picture', true); ?>
                 </div>
                 <div class="mb-3">
                     <input type="submit" name="submit_profile_picture" class="btn-rechercher md-2" value="Modifier ma photo">
+                </div>
+            </form>
+            <form method="post">
+                <div class="mb-3 p-1">
+                    <label for="numero_de_telephone" class="form-label fw-bold">Numéro de téléphone</label>
+                    <input type="tel" id="numero_de_telephone" name="numero_de_telephone" class="form-control" value="<?php echo esc_attr(get_user_meta($current_user->ID, 'numero_de_telephone', true)); ?>" pattern="^\+?[0-9\s\-]+$" required>
                 </div>
                 <div class="mb-3 p-1">
                      <label for="region" class="form-label fw-bold">Ville</label>
@@ -186,27 +190,17 @@ if (!empty($services)) {
                     <input type="submit" name="submit_biography" class="btn-rechercher md-2" value="Modifier mes informations">
                 </div>
                 <div class="mb-3 p-1">
+            </form>
+            <form method="post">
                     <label for="start_date">Date de début :</label>
                     <input type="date" id="start_date" name="start_date" value="<?php echo esc_attr($start_date); ?>" required>
                     <label for="end_date">Date de fin :</label>
                     <input type="date" id="end_date" name="end_date" value="<?php echo esc_attr($end_date); ?>" required>
                     <button class="btn-rechercher md-2"type="submit" name="update_dates">Mettre à jour</button>
                 </div>
-                <div class="mb-3 p-1">
-    <label for="numero_de_telephone" class="form-label fw-bold">Numéro de téléphone</label>
-    <input 
-        type="tel" 
-        id="numero_de_telephone" 
-        name="numero_de_telephone" 
-        class="form-control" 
-        value="<?php echo esc_attr(get_user_meta($current_user->ID, 'numero_de_telephone', true)); ?>" 
-        pattern="^\+?[0-9\s\-]+$"
-        placeholder="0485 64 79 50"
-        required>
-</div>
+            </form>
+                
 
-                </div>
-                </form>
             <!-- Formulaire HTML pour service -->
              <div>
             <form method="post">
@@ -233,7 +227,7 @@ if (!empty($services)) {
     <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-leve-patte.svg" alt="une femme tient son chien en laisse"/>
 </div>
             
-                 </div>
+
                  
 
    
