@@ -26,61 +26,43 @@ get_header();
                 </div>
                 <div class="container">
                     <h4 class="text-uppercase fw-bold text-start">
-                        <?php
-                            // Vérifie si l'utilisateur est connecté
-                            if (is_user_logged_in()) {
+                    <?php
+                        // Vérifie si l'utilisateur est connecté
+                        if (is_user_logged_in()) {
                             // Récupère les informations de l'utilisateur connecté
                             $current_user = wp_get_current_user();
                             // Récupère les rôles de l'utilisateur (un utilisateur peut avoir plusieurs rôles)
                             $roles = $current_user->roles;
+
+                            // Fonction pour formater les dates au format lisible
+                            function format_date($date) {
+                                return DateTime::createFromFormat('Ymd', $date)->format('d/m/Y');
+                            }
+
                             // Vérifie le rôle et affiche un message en fonction
                             if (in_array('chercheur', $roles)) {
-                            // Si l'utilisateur est un chercheur, le bouton est affiché
-                            echo "est à la recherche d'un sitter";
-                            echo '<form id="notification-form">';
-                            echo '<button class="btn btn-primary" type="submit">Devenir Sitter</button>';
-                            echo '</form>';
+                                // Si l'utilisateur est un chercheur, le bouton est affiché
+                                echo "est à la recherche d'un sitter";
+                                echo '<form id="notification-form">';
+                                echo '<button class="btn btn-primary" type="submit">Devenir Sitter</button>';
+                                echo '</form>';
                             } elseif (in_array('sitter', $roles)) {
-                            echo "propose ses services en tant que sitter.";
-                            echo '<br>';
-                            echo '<small>' . "du " . $current_user -> date_de_debut . " au " . $current_user -> date_de_fin . '</small>';
+                                // Si l'utilisateur est un sitter, affiche les dates formatées
+                                echo "est un sitter et propose comme service :";
+                                echo '<br>';
+                                echo '<br>';
+                                echo $current_user->services;
+                                echo '<br>';
+                                echo '<br>';
+                                // Formatage des dates
+                                $date_debut = format_date($current_user->date_de_debut);
+                                $date_fin = format_date($current_user->date_de_fin);
+                                
+                                echo '<small>' . "du " . $date_debut . " au " . $date_fin . '</small>';
                             }
-                            }
+                        }
                         ?>
-                        
-                        </h4>
-                </div>
-                <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/homme-saute-chat.svg" alt="homme heureux saute sur son chat" width="20%"/>
-                        <div>
-                            <h4>Hébergement</h4>
-                            <p>Votre animal de compagnie logera au domicile du pet-sitter.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-pelotte.svg" alt="chat sur une pelotte de laine" width="20%"/>
-                        <div>
-                            <h4>Garderie</h4>
-                            <p>Garderie de jour pour votre animal de compagnie.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chien-velo.svg" alt="chien sur vélo" width="20%"/>
-                        <div>
-                            <h4>Promenade</h4>
-                            <p>Le sitter viendra à votre domicile et promènera votre animal de compagnie.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center mb-4">
-                        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-couché.svg" alt="chat couché" width="20%"/>
-                        <div>
-                            <h4>Gardiennage de nuit</h4>
-                            <p>Le sitter logera à votre domicile pendant votre absence.</p>
-                        </div>
-                    </div>
-                </div>
+                    </h4>
                 </div>
             </div>
             <div class="col-md-1">
@@ -89,11 +71,7 @@ get_header();
                 </div>
             </div>
         </div>
-        <div><a href="https://api.whatsapp.com/send?phone=<?php echo esc_attr($sitter_phone); ?>&text=<?php echo urlencode('Bonjour, je suis intéressé par vos services !'); ?>" 
-           target="_blank" 
-           class="btn btn-success">
-            Contacter sur WhatsApp
-        </a></div>
+
     </div>
 </section>
 
@@ -120,14 +98,6 @@ get_header();
 
         </div>
       </div> 
-</section>
-
-<section class="container pt-2">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80598.65185362665!2d4.293016035002747!3d50.855093690325525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3a4ed73c76867%3A0xc18b3a66787302a7!2sBrussels!5e0!3m2!1sen!2sbe!4v1734356104826!5m2!1sen!2sbe" width="90%" height="80%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</section>
-
-<section  class="container pt-2">
-    <h2 class="text-uppercase fw-bold text-start pt-2">disponibilité</h2>
-</section>
+</section>  
 
 <?php get_footer(); ?>
