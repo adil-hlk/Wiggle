@@ -46,8 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $region = sanitize_text_field($_POST['region']); // Nettoyer l'entrée
         update_user_meta($user_id, 'region', $region);
     }
-    if (isset($_POST['services'])) {
-        update_user_meta($user_id, 'services', sanitize_text_field($_POST['services']));  }
+
+        // Traitement du numéro de téléphone
+        if (isset($_POST['numero_de_telephone'])) {
+            $numero_de_telephone = sanitize_text_field($_POST['numero_de_telephone']); // Nettoyer l'entrée utilisateur
+            update_user_meta($user_id, 'numero_de_telephone', $numero_de_telephone);
+       }
 
     // Traitement des dates
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_dates'])) {
@@ -69,12 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     wp_redirect(home_url('/Wiggle/mon-profil/'));
     exit;
 }
-        // Traitement du numéro de téléphone
-        if (isset($_POST['numero_de_telephone'])) {
-            $numero_de_telephone = sanitize_text_field($_POST['numero_de_telephone']); // Nettoyer l'entrée utilisateur
-            update_user_meta($user_id, 'numero_de_telephone', $numero_de_telephone);
-       }
-
 
 ?>
 
@@ -151,9 +149,9 @@ if (!empty($services)) {
     echo '<p>Services indisponibles.</p>';
 }
 ?>
+
 <?php
 /* Template Name: Modifier */
-
 get_header();
 ?>
 
@@ -176,7 +174,7 @@ get_header();
             <form method="post">
                 <div class="mb-3 p-1">
                     <label for="numero_de_telephone" class="form-label fw-bold">Numéro de téléphone</label>
-                    <input type="tel" id="numero_de_telephone" name="numero_de_telephone" class="form-control" value="<?php echo esc_attr(get_user_meta($current_user->ID, 'numero_de_telephone', true)); ?>" pattern="^\+?[0-9\s\-]+$" required>
+                    <input type="text" id="numero_de_telephone" name="numero_de_telephone" class="form-control" value="<?php echo esc_attr(get_user_meta($current_user->ID, 'numero_de_telephone', true)); ?>" pattern="^\+?[0-9\s\-]+$" required>
                 </div>
                 <div class="mb-3 p-1">
                      <label for="region" class="form-label fw-bold">Ville</label>
