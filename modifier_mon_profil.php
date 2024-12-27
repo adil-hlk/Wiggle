@@ -70,9 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
         // Traitement du numéro de téléphone
-        if (isset($_POST['phone_number'])) {
-            $phone_number = sanitize_text_field($_POST['phone_number']); // Nettoyer l'entrée utilisateur
-            update_user_meta($user_id, 'phone_number', $phone_number);
+        if (isset($_POST['numero_de_telephone'])) {
+            $numero_de_telephone = sanitize_text_field($_POST['numero_de_telephone']); // Nettoyer l'entrée utilisateur
+            update_user_meta($user_id, 'numero_de_telephone', $numero_de_telephone);
        }
 
 
