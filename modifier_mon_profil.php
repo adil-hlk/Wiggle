@@ -131,11 +131,17 @@ get_header();
             </form>
             <form method="post">
                 <div class="mb-3 p-1">
-                     <label for="services" class="form-label fw-bold">Services</label>
-                    <input type="text" id="services" name="services" class="form-control" value="<?php echo esc_attr(get_user_meta($current_user->ID, 'services', true)); ?>">
+                     <label for="services" class="form-label fw-bold">Service proposé</label>
+                     <select id="services" name="services" class="form-control">
+                        <option value="Garderie" <?php selected(get_user_meta($current_user->ID, 'services', true), 'option1'); ?>>Garderie</option>
+                        <option value="Garderie de nuit" <?php selected(get_user_meta($current_user->ID, 'services', true), 'option2'); ?>>Garderie de nuit</option>
+                        <option value="Hébergement" <?php selected(get_user_meta($current_user->ID, 'services', true), 'option3'); ?>>Hébergement</option>
+                        <option value="Promenade" <?php selected(get_user_meta($current_user->ID, 'services', true), 'option4'); ?>>Promenade</option>
+                    </select>
                 </div>
-                <button class="btn-rechercher md-2"type="submit" name="update_dates">Mettre à jour</button>
+                <button class="btn-rechercher md-2"type="submit" name="update_services">Mettre à jour</button>
             </form>
+            <br>
             <form method="post">
                 <div class="mb-3 p-1">
                     <label for="start_date">Date de début :</label>
