@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
   <?php wp_head(); ?>
-      
 </head>
             
 <body <?php body_class(); ?>>

@@ -168,13 +168,7 @@ function create_post_type()
     'has_archive' => true,
     'rewrite' => ['slug' => 'faqs']
   ]);
-  register_post_type('services', [
-    'labels' => ['name' => 'Services'],
-    'supports' => ['title', 'editor', 'thumbnail'],
-    'public' => true,
-    'has_archive' => true,
-    'rewrite' => ['slug' => 'services']
-  ]);
+
 }
 add_action('init', 'create_post_type');
 

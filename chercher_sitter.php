@@ -2,7 +2,51 @@
 get_header();
 $sitters = get_users_by_role('sitter');
 ?>
+<?php // Traitement du formulaire
+if ($_GET) {
+    $region = isset($_GET['region']) ? sanitize_text_field($_GET['region']) : '';
+    $services = isset($_GET['services']) ? sanitize_text_field($_GET['services']) : '';
 
+    // Construire la requête avec les critères
+    $args = array(
+        'role'    => 'sitter', // Filtre pour le rôle "sitter"
+        'meta_query' => array(
+            'relation' => 'AND', // Combine les filtres
+        ),
+    );
+
+    // Ajouter le filtre par région si une région est spécifiée
+    if (!empty($region)) {
+        $args['meta_query'][] = array(
+            'key'     => 'region',
+            'value'   => $region,
+            'compare' => 'LIKE', // Recherche partielle
+        );
+    }
+
+    // Ajouter le filtre par service si un service est spécifié
+    if (!empty($services)) {
+        $args['meta_query'][] = array(
+            'key'     => 'services',
+            'value'   => $services,
+            'compare' => 'LIKE', // Vérifie que le service est dans la liste
+        );
+    }
+
+    // Exécuter la requête
+    $user_query = new WP_User_Query($args);
+
+    // Vérifier si des résultats existent
+    if (!empty($user_query->get_results())) {
+        foreach ($user_query->get_results() as $user) {
+            echo '<p>' . esc_html($user->display_name) . ' - ' . esc_html(get_user_meta($user->ID, 'region', true)) . '</p>';
+        }
+    } else {
+        echo '<p>Aucun sitter trouvé avec ces critères.</p>';
+    }
+    
+}
+?>
 <main>
 
     <!-- Section de recherche -->
@@ -12,8 +56,8 @@ $sitters = get_users_by_role('sitter');
         <form id="search-form">
             <!-- Genre de service -->
             <div class="form-group">
-                <label for="service" class="fw-bold">Quel genre de service recherchez-vous ?</label>
-                <select class="form-control" id="service">
+                <label for="services" class="fw-bold">Quel genre de service recherchez-vous ?</label>
+                <select class="form-control" id="services">
                     <option value="">Tous les services</option>
                     <option value="Hebergement">Hébergement</option>
                     <option value="Promenade">Promenade</option>
@@ -48,7 +92,7 @@ $sitters = get_users_by_role('sitter');
                 <?php
                 $sitter_phone = get_user_meta($sitter->ID, 'numero_de_telephone', true);
                 $region = get_user_meta($sitter->ID, 'region', true);
-                $service = get_user_meta($sitter->ID, 'service', true);
+                $services = get_user_meta($sitter->ID, 'services', true);
 
                 // Récupération des dates ACF
                 $start_date = get_field('date_de_debut', 'user_' . $sitter->ID);
@@ -63,7 +107,7 @@ $sitters = get_users_by_role('sitter');
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo esc_html($sitter->user_login); ?></h5>
                                 <p class="card-text">Email : <?php echo esc_html($sitter->user_email); ?></p>
-                                <p class="card-text">Service : <?php echo esc_html($service ?: 'Non spécifié'); ?></p>
+                                <p class="card-text">Service : <?php echo esc_html($services ?: 'Non spécifié'); ?></p>
                                 <p class="card-text">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
                                 
                                 <!-- Affichage de la période de disponibilité -->
@@ -106,7 +150,7 @@ if ($sitter_phone) : ?>
             var cards = document.getElementsByClassName('sitter-card');
 
             for (var i = 0; i < cards.length; i++) {
-                var service = cards[i].getAttribute('data-service').toLowerCase();
+                var services = cards[i].getAttribute('data-service').toLowerCase();
                 var region = cards[i].getAttribute('data-region').toLowerCase();
 
                 if (
@@ -120,9 +164,6 @@ if ($sitter_phone) : ?>
             }
         });
     </script>
-
-
-
 
 </main>
 

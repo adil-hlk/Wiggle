@@ -1,7 +1,14 @@
-
+<?php
+// Assurez-vous que l'utilisateur est connecté
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/Wiggle/connexion/'));
+    exit;
+}
+?>
 
 <?php
 $current_user = wp_get_current_user();
+$user_id = $current_user->ID;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = get_current_user_id();
@@ -47,11 +54,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         update_user_meta($user_id, 'region', $region);
     }
 
-        // Traitement du numéro de téléphone
-        if (isset($_POST['numero_de_telephone'])) {
-            $numero_de_telephone = sanitize_text_field($_POST['numero_de_telephone']); // Nettoyer l'entrée utilisateur
-            update_user_meta($user_id, 'numero_de_telephone', $numero_de_telephone);
+    // Traitement du numéro de téléphone
+    if (isset($_POST['numero_de_telephone'])) {
+        $numero_de_telephone = sanitize_text_field($_POST['numero_de_telephone']); // Nettoyer l'entrée utilisateur
+        update_user_meta($user_id, 'numero_de_telephone', $numero_de_telephone);
        }
+
+    // Traitement des services
+    if (isset($_POST['services'])) {
+        // Vérifier et nettoyer les services envoyés par le formulaire
+        $services = sanitize_text_field($_POST['services']); // Nettoyer l'entrée utilisateur
+        update_user_meta($user_id, 'services', $services);
+        }
 
     // Traitement des dates
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_dates'])) {
@@ -76,79 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-<?php
-// Assurez-vous que l'utilisateur est connecté
-if (!is_user_logged_in()) {
-    wp_redirect(home_url('/Wiggle/connexion/'));
-    exit;
-}
-
-// Récupérer l'utilisateur actuel
-$current_user = wp_get_current_user();
-$user_id = $current_user->ID;
-?>
-
-
-<?php // Traitement du formulaire
-if ($_GET) {
-    $region = isset($_GET['region']) ? sanitize_text_field($_GET['region']) : '';
-    $services = isset($_GET['services']) ? sanitize_text_field($_GET['services']) : '';
-
-    // Construire la requête avec les critères
-    $args = array(
-        'role'    => 'sitter', // Filtre pour le rôle "sitter"
-        'meta_query' => array(
-            'relation' => 'AND', // Combine les filtres
-        ),
-    );
-
-    // Ajouter le filtre par région si une région est spécifiée
-    if (!empty($region)) {
-        $args['meta_query'][] = array(
-            'key'     => 'region',
-            'value'   => $region,
-            'compare' => 'LIKE', // Recherche partielle
-        );
-    }
-
-    // Ajouter le filtre par service si un service est spécifié
-    if (!empty($services)) {
-        $args['meta_query'][] = array(
-            'key'     => 'services',
-            'value'   => $services,
-            'compare' => 'LIKE', // Vérifie que le service est dans la liste
-        );
-    }
-
-    // Exécuter la requête
-    $user_query = new WP_User_Query($args);
-
-    // Vérifier si des résultats existent
-    if (!empty($user_query->get_results())) {
-        foreach ($user_query->get_results() as $user) {
-            echo '<p>' . esc_html($user->display_name) . ' - ' . esc_html(get_user_meta($user->ID, 'region', true)) . '</p>';
-        }
-    } else {
-        echo '<p>Aucun sitter trouvé avec ces critères.</p>';
-    }
-    
-}
-?>
-
-
-<?php
-// Récupérer le champ ACF "services" pour l'utilisateur
-$user_id = $user->ID; // Remplace $user par l'objet utilisateur actuel
-$services = get_field('services', 'user_' . $user_id); // Préfixe "user_" pour les utilisateurs
-
-// Vérifier si des services existent
-if (!empty($services)) {
-    // Afficher les services (le champ est un tableau)
-    echo '<p>Services disponibles : ' . implode('Promenade,Garderie,Garderie de nuit,Hébergement', $services) . '</p>';
-} else {
-    echo '<p>Services indisponibles.</p>';
-}
-?>
 
 <?php
 /* Template Name: Modifier */
@@ -187,65 +128,31 @@ get_header();
                 <div class="mb-3 p-3">
                     <input type="submit" name="submit_biography" class="btn-rechercher md-2" value="Modifier mes informations">
                 </div>
-                <div class="mb-3 p-1">
             </form>
             <form method="post">
+                <div class="mb-3 p-1">
+                     <label for="services" class="form-label fw-bold">Services</label>
+                    <input type="text" id="services" name="services" class="form-control" value="<?php echo esc_attr(get_user_meta($current_user->ID, 'services', true)); ?>">
+                </div>
+                <button class="btn-rechercher md-2"type="submit" name="update_dates">Mettre à jour</button>
+            </form>
+            <form method="post">
+                <div class="mb-3 p-1">
                     <label for="start_date">Date de début :</label>
                     <input type="date" id="start_date" name="start_date" value="<?php echo esc_attr($start_date); ?>" required>
                     <label for="end_date">Date de fin :</label>
                     <input type="date" id="end_date" name="end_date" value="<?php echo esc_attr($end_date); ?>" required>
                     <button class="btn-rechercher md-2"type="submit" name="update_dates">Mettre à jour</button>
                 </div>
-            </form>
-                
-
-            <!-- Formulaire HTML pour service -->
-            <?php
-// Récupérer l'utilisateur actuel
-$current_user = wp_get_current_user();
-$user_id = $current_user->ID;
-
-// Récupérer les services actuels (ACF checkbox)
-$available_services = ['Promenade', 'Garderie', 'Garderie de nuit', 'Hébergement'];
-$selected_services = get_field('services', 'user_' . $user_id); // Récupérer les services sélectionnés
-
-// Traitement du formulaire lors de la soumission
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_services'])) {
-    // Vérifier et nettoyer les services envoyés par le formulaire
-    $new_services = isset($_POST['services']) ? array_map('sanitize_text_field', $_POST['services']) : [];
-    update_field('services', $new_services, 'user_' . $user_id);
-}
-?>
-
-<form method="post">
-    <h3>Services proposés :</h3>
-    <?php foreach ($available_services as $service): ?>
-        <div>
-            <label>
-                <input type="checkbox" name="services[]" value="<?php echo esc_attr($service); ?>"
-                    <?php echo (is_array($selected_services) && in_array($service, $selected_services)) ? 'checked' : ''; ?>>
-                <?php echo esc_html($service); ?>
-            </label>
+            </form> 
         </div>
-    <?php endforeach; ?>
-    <button type="submit" name="update_services" class="btn-rechercher md-2">Mettre à jour</button>
-</form>
-
-            
-                </div>
-         <br>
+        <br>
     </section>
 
     <div class="flex-row-reverse p-5">
-    <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-leve-patte.svg" alt="une femme tient son chien en laisse"/>
-</div>
-            
+        <img class="illu-img-moyen" src="<?php echo get_template_directory_uri(); ?>/assets/images/chat-leve-patte.svg" alt="une femme tient son chien en laisse"/>
+    </div>
 
-                 
-
-   
 </main>
-
-
 
 <?php get_footer(); ?>
