@@ -1,28 +1,4 @@
-<script>
-        // Ajout de la logique pour filtrer les cartes
-        document.getElementById('filter-button').addEventListener('click', function () {
-            var serviceFilter = document.getElementById('service').value.toLowerCase();
-            var regionFilter = document.getElementById('region').value.toLowerCase();
-            var dateFilter = document.getElementById('date').value;
-
-            var cards = document.getElementsByClassName('sitter-card');
-
-            for (var i = 0; i < cards.length; i++) {
-                var service = cards[i].getAttribute('data-service').toLowerCase();
-                var region = cards[i].getAttribute('data-region').toLowerCase();
-
-                if (
-                    (serviceFilter === '' || service.includes(serviceFilter)) &&
-                    (regionFilter === '' || region.includes(regionFilter))
-                ) {
-                    cards[i].style.display = '';
-                } else {
-                    cards[i].style.display = 'none';
-                }
-            }
-        });
-    </script>
-    <?php /* Template Name: Chercher un sitter */
+<?php /* Template Name: Chercher un sitter */
 get_header();
 $sitters = get_users_by_role('sitter');
 ?>
@@ -120,7 +96,30 @@ if ($sitter_phone) : ?>
         <?php endif; ?>
     </div>
 </section>
+<script>
+        // Ajout de la logique pour filtrer les cartes
+        document.getElementById('filter-button').addEventListener('click', function () {
+            var serviceFilter = document.getElementById('service').value.toLowerCase();
+            var regionFilter = document.getElementById('region').value.toLowerCase();
+            var dateFilter = document.getElementById('date').value;
 
+            var cards = document.getElementsByClassName('sitter-card');
+
+            for (var i = 0; i < cards.length; i++) {
+                var service = cards[i].getAttribute('data-service').toLowerCase();
+                var region = cards[i].getAttribute('data-region').toLowerCase();
+
+                if (
+                    (serviceFilter === '' || service.includes(serviceFilter)) &&
+                    (regionFilter === '' || region.includes(regionFilter))
+                ) {
+                    cards[i].style.display = '';
+                } else {
+                    cards[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
 
 
 
