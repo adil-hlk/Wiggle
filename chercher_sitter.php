@@ -141,27 +141,31 @@ if ($sitter_phone) : ?>
 </section>
 <script>
         // Ajout de la logique pour filtrer les cartes
-        document.getElementById('filter-button').addEventListener('click', function () {
-            var serviceFilter = document.getElementById('service').value.toLowerCase();
-            var regionFilter = document.getElementById('region').value.toLowerCase();
-            var dateFilter = document.getElementById('date').value;
+        document.addEventListener('DOMContentLoaded', function () {
+    const filterButton = document.getElementById('filter-button');
+    if (filterButton) {
+        filterButton.addEventListener('click', function () {
+            const serviceFilter = document.getElementById('services').value.toLowerCase();
+            const regionFilter = document.getElementById('region').value.toLowerCase();
 
-            var cards = document.getElementsByClassName('sitter-card');
+            const cards = document.querySelectorAll('.sitter-card');
 
-            for (var i = 0; i < cards.length; i++) {
-                var services = cards[i].getAttribute('data-service').toLowerCase();
-                var region = cards[i].getAttribute('data-region').toLowerCase();
+            cards.forEach(card => {
+                const services = card.getAttribute('data-service') || '';
+                const region = card.getAttribute('data-region') || '';
 
                 if (
-                    (serviceFilter === '' || service.includes(serviceFilter)) &&
-                    (regionFilter === '' || region.includes(regionFilter))
+                    (serviceFilter === '' || services.toLowerCase().includes(serviceFilter)) &&
+                    (regionFilter === '' || region.toLowerCase().includes(regionFilter))
                 ) {
-                    cards[i].style.display = '';
+                    card.style.display = 'block';
                 } else {
-                    cards[i].style.display = 'none';
+                    card.style.display = 'none';
                 }
-            }
+            });
         });
+    }
+});
     </script>
 
 </main>
