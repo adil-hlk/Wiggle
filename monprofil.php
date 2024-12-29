@@ -9,8 +9,10 @@ get_header();
     <div class="container">
         <div class="row align-item-center">
             <div class="col-md-4 align-item-center">
-                <div class="container"><?php if ($profile_picture) {
+                <div class="container"><?php $default_picture = get_template_directory_uri() . '/assets/images/avatar.png'; if ($profile_picture) {
                    echo '<img src="' . esc_url($profile_picture) . '" alt="Photo de profil de ' . esc_attr($current_user->display_name) . '" class="photo-profil">';
+                    } else {
+                        echo '<img src ="' . esc_url($default_picture) . '" alt="Photo de profil de ' . esc_attr($current_user->display_name) . '" class="photo-profil">';
                     }
                 ?>
                 </div>
