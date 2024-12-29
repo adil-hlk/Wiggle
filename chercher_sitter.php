@@ -106,15 +106,6 @@ if ($_GET) {
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo esc_html($sitter->first_name); ?> <?php echo esc_html($sitter->last_name); ?></h5>
-                                <?php  if ($profile_picture) : ?>
-                                    <div class="container">
-                                        <img src="<?php echo esc_html ($sitter->profile_picture); ?>" class="photo-profil" alt="Photo de profil">
-                                    </div>
-                                <?php else : ?>
-                                    <div class="container">
-                                        <img src="<?php echo esc_url($default_picture); ?>" alt="Photo de profil de <?php echo esc_attr($current_user->display_name); ?>" class="photo-profil"> 
-                                    </div>
-                                <?php endif; ?>
                                 <p class="card-text">Service : <?php echo esc_html($services ?: 'Non spécifié'); ?></p>
                                 <p class="card-text">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
                                 
