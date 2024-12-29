@@ -12,6 +12,7 @@ if (isset($_GET['user_id'])) {
         $services = get_user_meta($sitter->ID, 'services', true);
         $start_date = get_field('date_de_debut', 'user_' . $sitter->ID);
         $end_date = get_field('date_de_fin', 'user_' . $sitter->ID);
+        $description = esc_html($sitter->description);
     } else {
         echo "<p>Sitter non trouvé.</p>";
     }
@@ -24,17 +25,24 @@ if (isset($_GET['user_id'])) {
     <?php if ($sitter): ?>
         <section class="profile-details text-center p-5 bg-custom">
             <div class="container">
-                <h2 class="text-uppercase fw-bold text-start pt-2">Profil de <?php echo esc_html($sitter->first_name); ?> <?php echo esc_html($sitter->last_name); ?></h2>
-                <p class="fw-bold">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
-                <p class="fw-bold">Service : <?php echo esc_html($services ?: 'Non spécifié'); ?></p>
-                <p class="fw-bold">Disponibilité : <?php echo esc_html($start_date); ?> au <?php echo esc_html($end_date); ?></p>
-                <p class="card-text">
-                    <a href="https://api.whatsapp.com/send?phone=<?php echo esc_attr($sitter_phone); ?>&text=<?php echo urlencode('Bonjour, je suis intéressé par vos services !'); ?>" 
-                        target="_blank" 
-                        class="btn btn-success">
-                        Contacter sur WhatsApp
-                    </a>
-                </p>
+                <div class="row align-item-center">
+                    <div class="col-md-5">
+                        <h2 class="text-uppercase fw-bold text-start pt-2">Profil de <?php echo esc_html($sitter->first_name); ?> <?php echo esc_html($sitter->last_name); ?></h2>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="fw-bold">Bio : <?php echo esc_html($description ?:'Pas de description'); ?>
+                        <p class="fw-bold">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
+                        <p class="fw-bold">Service : <?php echo esc_html($services ?: 'Non spécifié'); ?></p>
+                        <p class="fw-bold">Disponibilité : <?php echo esc_html($start_date); ?> au <?php echo esc_html($end_date); ?></p>
+                        <p class="card-text">
+                            <a href="https://api.whatsapp.com/send?phone=<?php echo esc_attr($sitter_phone); ?>&text=<?php echo urlencode('Bonjour, je suis intéressé par vos services !'); ?>" 
+                                target="_blank" 
+                                class="btn btn-success">
+                                Contacter sur WhatsApp
+                            </a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 

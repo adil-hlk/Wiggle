@@ -59,7 +59,7 @@ if ($_GET) {
                 <label for="services" class="fw-bold">Quel genre de service recherchez-vous ?</label>
                 <select class="form-control" id="services">
                     <option value="">Tous les services</option>
-                    <option value="Hebergement">Hébergement</option>
+                    <option value="Hébergement">Hébergement</option>
                     <option value="Promenade">Promenade</option>
                     <option value="Garderie">Garderie</option>
                     <option value="Garderie de nuit">Garderie de nuit</option>
@@ -99,7 +99,7 @@ if ($_GET) {
                 $end_date = get_field('date_de_fin', 'user_' . $sitter->ID);
                 ?>
                 <div class="sitter-card" 
-                     data-service="<?php echo esc_attr($service); ?>" 
+                     data-services="<?php echo esc_attr($services); ?>" 
                      data-region="<?php echo esc_attr($region); ?>">
                      
                     <a href="<?php echo esc_url(get_permalink(get_page_by_path('profil')) . '?user_id=' . $sitter->ID); ?>" class="card-link">
@@ -145,17 +145,17 @@ if ($sitter_phone) : ?>
     const filterButton = document.getElementById('filter-button');
     if (filterButton) {
         filterButton.addEventListener('click', function () {
-            const serviceFilter = document.getElementById('services').value.toLowerCase();
+            const servicesFilter = document.getElementById('services').value.toLowerCase();
             const regionFilter = document.getElementById('region').value.toLowerCase();
 
             const cards = document.querySelectorAll('.sitter-card');
 
             cards.forEach(card => {
-                const services = card.getAttribute('data-service') || '';
+                const services = card.getAttribute('data-services') || '';
                 const region = card.getAttribute('data-region') || '';
 
                 if (
-                    (serviceFilter === '' || services.toLowerCase().includes(serviceFilter)) &&
+                    (servicesFilter === '' || services.toLowerCase().includes(servicesFilter)) &&
                     (regionFilter === '' || region.toLowerCase().includes(regionFilter))
                 ) {
                     card.style.display = 'block';

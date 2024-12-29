@@ -1,6 +1,6 @@
 <?php 
 $currentuser = wp_get_current_user() ;
-$profile_picture = get_user_meta($current_user->ID,'profile_picture', true);
+$profile_picture = get_user_meta($currentuser->ID,'profile_picture', true);
 /* Template Name: Mon Profil */
 get_header(); 
 ?>
@@ -34,11 +34,7 @@ get_header();
                             // Récupère les rôles de l'utilisateur (un utilisateur peut avoir plusieurs rôles)
                             $roles = $current_user->roles;
 
-                            // Fonction pour formater les dates au format lisible
-                            function format_date($date) {
-                                return DateTime::createFromFormat('Ymd', $date)->format('d/m/Y');
-                            }
-
+                            
                             // Vérifie le rôle et affiche un message en fonction
                             if (in_array('chercheur', $roles)) {
                                 // Si l'utilisateur est un chercheur, le bouton est affiché
@@ -54,11 +50,7 @@ get_header();
                                 echo $current_user->services;
                                 echo '<br>';
                                 echo '<br>';
-                                // Formatage des dates
-                                $date_debut = format_date($current_user->date_de_debut);
-                                $date_fin = format_date($current_user->date_de_fin);
-                                
-                                echo '<small>' . "du " . $date_debut . " au " . $date_fin . '</small>';
+                                echo '<small>' . "du " . $currentuser ->date_de_debut . " au " . $currentuser ->date_de_fin . '</small>';
                             }
                         }
                         ?>
