@@ -23,17 +23,19 @@ if (isset($_GET['user_id'])) {
 <main>
     <?php if ($sitter): ?>
         <section class="profile-details text-center p-5 bg-custom">
-            <h2 class="text-uppercase fw-bold text-start pt-2">Profil de <?php echo esc_html($sitter->user_login); ?></h2>
-            <p class="fw-bold">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
-            <p class="fw-bold">Service : <?php echo esc_html($services ?: 'Non spécifié'); ?></p>
-            <p class="fw-bold">Disponibilité : <?php echo esc_html($start_date); ?> au <?php echo esc_html($end_date); ?></p>
-            <p class="card-text">
-        <a href="https://api.whatsapp.com/send?phone=<?php echo esc_attr($sitter_phone); ?>&text=<?php echo urlencode('Bonjour, je suis intéressé par vos services !'); ?>" 
-           target="_blank" 
-           class="btn btn-success">
-            Contacter sur WhatsApp
-        </a>
-    </p>
+            <div class="container">
+                <h2 class="text-uppercase fw-bold text-start pt-2">Profil de <?php echo esc_html($sitter->first_name); ?> <?php echo esc_html($sitter->last_name); ?></h2>
+                <p class="fw-bold">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
+                <p class="fw-bold">Service : <?php echo esc_html($services ?: 'Non spécifié'); ?></p>
+                <p class="fw-bold">Disponibilité : <?php echo esc_html($start_date); ?> au <?php echo esc_html($end_date); ?></p>
+                <p class="card-text">
+                    <a href="https://api.whatsapp.com/send?phone=<?php echo esc_attr($sitter_phone); ?>&text=<?php echo urlencode('Bonjour, je suis intéressé par vos services !'); ?>" 
+                        target="_blank" 
+                        class="btn btn-success">
+                        Contacter sur WhatsApp
+                    </a>
+                </p>
+            </div>
         </section>
 
         <br> <section id="Avis" class="text-center p-5 bg-custom1">

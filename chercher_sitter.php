@@ -105,8 +105,7 @@ if ($_GET) {
                     <a href="<?php echo esc_url(get_permalink(get_page_by_path('profil')) . '?user_id=' . $sitter->ID); ?>" class="card-link">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo esc_html($sitter->user_login); ?></h5>
-                                <p class="card-text">Email : <?php echo esc_html($sitter->user_email); ?></p>
+                                <h5 class="card-title"><?php echo esc_html($sitter->first_name); ?> <?php echo esc_html($sitter->last_name); ?></h5>
                                 <p class="card-text">Service : <?php echo esc_html($services ?: 'Non spécifié'); ?></p>
                                 <p class="card-text">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
                                 
