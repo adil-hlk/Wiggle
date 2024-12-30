@@ -125,7 +125,7 @@ if ($_GET) {
                         <a href="<?php echo esc_url(get_permalink(get_page_by_path('profil')) . '?user_id=' . $sitter->ID); ?>" class="card-link">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo esc_html($sitter->display_name); ?></h5>
+                                    <h5 class="card-title"><?php echo esc_html($sitter->first_name); ?> <?php echo esc_html($sitter->last_name); ?></h5>
                                     <p class="card-text">Service : <?php echo esc_html($services ?: 'Non spécifié'); ?></p>
                                     <p class="card-text">Région : <?php echo esc_html($region ?: 'Non spécifiée'); ?></p>
                                     
