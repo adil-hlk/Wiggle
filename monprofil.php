@@ -7,7 +7,7 @@ get_header();
 
 <section id="profil" class="services p-5">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-item-center">
             <div class="col-md-4 align-items-center">
                 <div class="container">
                     <?php if ($profile_picture) {

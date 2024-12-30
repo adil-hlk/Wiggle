@@ -155,9 +155,6 @@ function ajouter_rols_personnalises() {
 }
 add_action( 'init', 'ajouter_rols_personnalises' );
 
-
-
-
 // CUSTOM POSTS TYPES
 function create_post_type()
 {
@@ -187,3 +184,9 @@ function menuheader_link_class($attributes)
 }
 add_filter('nav_menu_link_attributes', 'menuheader_link_class');
 
+// retirer menu WP
+add_action('after_setup_theme', function () {
+  if (!current_user_can('administrator')) {
+      show_admin_bar(false);
+  }
+});
